@@ -2,15 +2,6 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-
-<link rel="icon" href="./favicon.ico" sizes="any">
-<link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-<link rel="manifest" href="./site.webmanifest">
-<meta name="msapplication-TileColor" content="#5865F2">
-<meta name="theme-color" content="#0e1015">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elancag — Руководство пользователя</title>
 <style>
@@ -587,7 +578,7 @@
       <div class="icon">🤖</div>
       <div>
         <div class="name">Elancag</div>
-        <div class="ver">v2.5 · docs</div>
+        <div class="ver">v2.5.3 · docs</div>
       </div>
     </div>
 
@@ -602,7 +593,6 @@
       <a class="nav-link" href="#cmd-ping"><span class="emoji">🏓</span> /ping</a>
       <a class="nav-link" href="#cmd-info"><span class="emoji">🤖</span> /info</a>
       <a class="nav-link" href="#cmd-help"><span class="emoji">📖</span> /help</a>
-      <a class="nav-link" href="#cmd-status"><span class="emoji">📊</span> /status</a>
       <a class="nav-link" href="#cmd-setregion"><span class="emoji">🌍</span> /setregion</a>
       <a class="nav-link" href="#cmd-setstatus"><span class="emoji">💬</span> /setstatus</a>
       <a class="nav-link" href="#cmd-unic"><span class="emoji">✨</span> /unic</a>
@@ -812,77 +802,6 @@
             <div class="note info">
               <div class="note-icon">💡</div>
               <div>Команды с пометкой 🔒 ограничены для тебя. Команды в зачёркнутом тексте отключены на этом сервере.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- /status -->
-        <div class="cmd-card" id="cmd-status">
-          <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">📊</div>
-            <div class="cmd-meta">
-              <div class="cmd-name">/status</div>
-              <div class="cmd-desc">Управление каналами-статусниками в верхней части сервера</div>
-              <div class="cmd-badges">
-                <span class="badge badge-perm">Manage Channels</span>
-                <span class="badge badge-cd">кд: 5 сек</span>
-                <span class="badge badge-ephem">виден только тебе</span>
-              </div>
-            </div>
-            <div class="cmd-toggle">⌄</div>
-          </div>
-          <div class="cmd-body">
-            <p>Создаёт два голосовых канала вверху сервера, которые автоматически показывают статус бота и средний ping за последние 10 минут. Войти в каналы нельзя — они только для отображения информации.</p>
-
-            <div class="usage-block">
-              <div class="usage-label">Субкоманды</div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/status on</div>
-              </div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/status off</div>
-              </div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/status info</div>
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-header"><div class="dot"></div> Включение статусников</div>
-              <div class="example-body">
-                <div class="ex-msg"><span class="user">@admin</span> → <span class="cmd">/status on</span></div>
-                <div class="ex-reply green">
-                  <div class="ex-embed-title">✅ Каналы-статусники созданы</div>
-                  <div class="ex-embed-body">
-                    • #🟢・Онлайн — статус бота<br>
-                    • #📶・67ms — средний отклик за 10 минут<br><br>
-                    Каналы видны всем, войти нельзя.<br>
-                    Имена обновляются раз в 10 минут.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-header"><div class="dot"></div> Проверка состояния</div>
-              <div class="example-body">
-                <div class="ex-msg"><span class="user">@user</span> → <span class="cmd">/status info</span></div>
-                <div class="ex-reply green">
-                  <div class="ex-embed-title">🟢 Каналы-статусники активны</div>
-                  <div class="ex-embed-body">
-                    • #🟢・Онлайн — статус бота<br>
-                    • #📶・67ms — средний отклик
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="note">
-              <div class="note-icon">⚠️</div>
-              <div>Если статусники уже включены и ты хочешь пересоздать их — сначала выключи через <code>/status off</code>, затем снова <code>/status on</code>.</div>
             </div>
           </div>
         </div>
@@ -1130,7 +1049,7 @@
           </div>
           <div class="flow-step">
             <div class="flow-num">3</div>
-            <div class="flow-text"><strong>Администратор Discord</strong> — право <code>Administrator</code> даёт доступ к <code>/unic</code>. Право <code>Manage Channels</code> — к <code>/status</code>, <code>/setregion</code>, <code>/setstatus</code>.</div>
+            <div class="flow-text"><strong>Администратор Discord</strong> — право <code>Administrator</code> даёт доступ к <code>/unic</code>. Право <code>Manage Channels</code> — к <code>/setregion</code>, <code>/setstatus</code>.</div>
           </div>
           <div class="flow-step">
             <div class="flow-num">4</div>
@@ -1155,7 +1074,6 @@
           <tbody>
             <tr><td><code>/ping</code></td><td>5 секунд</td></tr>
             <tr><td><code>/help</code></td><td>5 секунд</td></tr>
-            <tr><td><code>/status</code></td><td>5 секунд</td></tr>
             <tr><td><code>/unic</code></td><td>5 секунд</td></tr>
             <tr><td><code>/setregion</code></td><td>10 секунд</td></tr>
             <tr><td><code>/setstatus</code></td><td>10 секунд</td></tr>
