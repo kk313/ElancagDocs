@@ -432,12 +432,25 @@ body::after {
 
 <script>
 /* ── Animated name ─────────────────────────────── */
-const name = 'Elancag';
+const NAMES = [
+  { text: 'Elancag',          weight: 1000 },
+  { text: 'ГОООООЛ', 		weight: 1 },
+  { text: 'Насрано',           weight: 1 },
+];
+
+function pickName() {
+  const total = NAMES.reduce((s, n) => s + n.weight, 0);
+  let r = Math.random() * total;
+  for (const n of NAMES) { r -= n.weight; if (r <= 0) return n.text; }
+  return NAMES[0].text;
+}
+
+const chosenName = pickName();
 const container = document.getElementById('heroName');
-name.split('').forEach((ch, i) => {
+chosenName.split('').forEach((ch, i) => {
   const span = document.createElement('span');
   span.className = 'letter';
-  span.textContent = ch;
+  span.textContent = ch === ' ' ? ' ' : ch;
   span.style.animationDelay = `${.3 + i * .04}s`;
   container.appendChild(span);
 });
