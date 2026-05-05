@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elancag — Roadmap</title>
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="./site.webmanifest">
+<meta name="theme-color" content="#0e1015">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inconsolata:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #080b11;
+  --panel:     #111620;
+  --panel2:    #19202f;
+  --rim:       #252f46;
+  --rim2:      #38496e;
+  --blurple:   #5865F2;
+  --blurple-h: #6d79ff;
+  --text:      #eef1f8;
+  --sub:       #9aa3bc;
+  --muted:     #6a789a;
+  --accent:    #57F287;
+  --yellow:    #FEE75C;
+  --mono:      'Inconsolata', monospace;
+  --sans:      'Syne', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#cvs { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .35; }
+
+body::after {
+  content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .02;
+}
+
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 20; height: 56px;
+  background: rgba(8,11,17,.9); border-bottom: 1px solid var(--rim);
+  backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: space-between; padding: 0 28px;
+}
+.topbar-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.topbar-brand .logo-box {
+  width: 32px; height: 32px; background: var(--blurple); border-radius: 9px;
+  display: grid; place-items: center; font-size: 16px;
+}
+.topbar-brand .logo-name { font-weight: 800; font-size: 15px; letter-spacing: -.01em; color: var(--text); }
+.topbar-nav { display: flex; align-items: center; gap: 4px; }
+.topbar-link {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+  color: var(--sub); text-decoration: none; padding: 5px 13px; border-radius: 7px;
+  transition: color .15s, background .15s;
+}
+.topbar-link:hover  { color: var(--text); background: var(--panel2); }
+.topbar-link.active { color: #fff; background: rgba(88,101,242,.2); }
+.discord-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; background: var(--panel2); border: 1px solid var(--rim);
+  border-radius: 9px; text-decoration: none; margin-left: 8px;
+  transition: background .18s, border-color .18s, transform .18s, box-shadow .18s;
+}
+.discord-btn:hover {
+  background: var(--blurple); border-color: var(--blurple);
+  transform: translateY(-1px); box-shadow: 0 4px 16px rgba(88,101,242,.4);
+}
+.discord-btn svg { width: 18px; height: 18px; fill: var(--sub); transition: fill .18s; }
+.discord-btn:hover svg { fill: #fff; }
+
+.wrap { position: relative; z-index: 2; padding-top: 56px; }
+
+.hero { text-align: center; padding: 72px 24px 56px; position: relative; }
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 640px; height: 260px;
+  background: radial-gradient(ellipse at center, rgba(88,101,242,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--sub); border: 1px solid var(--rim2); background: var(--panel2);
+  padding: 5px 16px; border-radius: 40px; margin-bottom: 28px;
+  opacity: 0; animation: rise .6s .05s ease forwards;
+}
+.hero-tag .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--yellow); box-shadow: 0 0 8px var(--yellow);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 68px); font-weight: 800;
+  letter-spacing: -.03em; line-height: 1.1; margin-bottom: 16px;
+  background: linear-gradient(150deg, #fff 30%, #8891c8 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  opacity: 0; animation: rise .7s .15s ease forwards;
+}
+.hero-sub {
+  font-family: var(--mono); font-size: 14px; color: var(--sub);
+  max-width: 440px; margin: 0 auto; line-height: 1.75;
+  opacity: 0; animation: rise .7s .28s ease forwards;
+}
+.hero-sub em { font-style: normal; color: #a5acf8; }
+
+.board {
+  max-width: 1160px; margin: 0 auto; padding: 0 24px 100px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start;
+  opacity: 0; animation: rise .7s .4s ease forwards;
+}
+@media (max-width: 860px) { .board { grid-template-columns: 1fr; } }
+
+.col {
+  border-radius: 16px; display: flex; flex-direction: column;
+  border: 1px solid var(--rim); background: var(--panel);
+}
+.col--now  { border-color: rgba(87,242,135,.25); }
+.col--plan { border-color: rgba(88,101,242,.28); }
+.col--far  { border-color: var(--rim); }
+
+.col-header {
+  padding: 18px 20px 16px; border-bottom: 1px solid var(--rim);
+  display: flex; align-items: center; gap: 10px; background: var(--panel);
+}
+.col-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.col--now  .col-dot { background: var(--accent);  box-shadow: 0 0 10px rgba(87,242,135,.55); }
+.col--plan .col-dot { background: var(--blurple); box-shadow: 0 0 10px rgba(88,101,242,.55); }
+.col--far  .col-dot { background: var(--muted); }
+
+.col-title { flex: 1; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.col--now  .col-title { color: var(--accent); }
+.col--plan .col-title { color: #a5acf8; }
+.col--far  .col-title { color: var(--sub); }
+
+.col-count {
+  font-family: var(--mono); font-size: 11px; color: var(--sub);
+  background: var(--panel2); border: 1px solid var(--rim2); padding: 2px 9px; border-radius: 20px;
+}
+
+.col-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+.card {
+  background: var(--panel2); border: 1px solid var(--rim2);
+  border-radius: 11px; padding: 16px 16px 14px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.card:hover {
+  border-color: #4a5e88; transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(0,0,0,.45);
+}
+.card-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.card-icon { font-size: 21px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+.card-title { flex: 1; font-size: 14.5px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; color: var(--text); }
+
+.card-status {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 20px; flex-shrink: 0; margin-top: 1px;
+}
+.cs-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.cs-live   { color: #6effa5; background: rgba(87,242,135,.15); border: 1px solid rgba(87,242,135,.4); }
+.cs-queued { color: #9aa8ff; background: rgba(88,101,242,.15); border: 1px solid rgba(88,101,242,.4); }
+.cs-idea   { color: #8899bb; background: rgba(90,102,128,.12); border: 1px solid var(--rim2); }
+
+.card-desc {
+  font-family: var(--mono); font-size: 12.5px;
+  color: var(--sub); line-height: 1.7; margin-bottom: 12px;
+}
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag-pill {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: .04em; padding: 3px 9px; border-radius: 20px; border: 1px solid;
+}
+.tp-green  { color: #6effa5; border-color: rgba(87,242,135,.45); background: rgba(87,242,135,.09); }
+.tp-blue   { color: #9aa8ff; border-color: rgba(88,101,242,.45); background: rgba(88,101,242,.10); }
+.tp-muted  { color: #9aa3bc; border-color: var(--rim2);          background: rgba(255,255,255,.04); }
+.tp-red    { color: #ff8e90; border-color: rgba(237,66,69,.45);  background: rgba(237,66,69,.09); }
+.tp-teal   { color: #5fffd4; border-color: rgba(87,242,200,.45); background: rgba(87,242,200,.09); }
+
+.foot {
+  text-align: center; font-family: var(--mono); font-size: 11px;
+  color: var(--muted); padding-bottom: 48px;
+  letter-spacing: .06em; position: relative; z-index: 2;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 560px) { .topbar-link:not(.active) { display: none; } }
+</style>
+</head>
+<body>
+
+<canvas id="cvs"></canvas>
+
+<nav class="topbar">
+  <a class="topbar-brand" href="https://kk313.github.io/ElancagDocs/">
+    <div class="logo-box">🤖</div>
+    <span class="logo-name">Elancag</span>
+  </a>
+  <div class="topbar-nav">
+    <a class="topbar-link" href="https://kk313.github.io/ElancagDocs/">Главная</a>
+    <a class="topbar-link" href="https://kk313.github.io/ElancagDocs/docs">Документация</a>
+    <a class="topbar-link active">Roadmap</a>
+    <a class="discord-btn" href="#" title="Официальный сервер" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Публичная дорожная карта · v2.5.3
+    </div>
+    <h1>Roadmap</h1>
+    <p class="hero-sub">
+      Что в разработке, что в планах<br>
+      и <em>куда движется Elancag</em>.
+    </p>
+  </div>
+
+  <div class="board">
+
+    <!-- ══ ТЕКУЩАЯ ══ -->
+    <div class="col col--now">
+      <div class="col-header">
+        <div class="col-dot"></div>
+        <span class="col-title">Текущая</span>
+        <span class="col-count">3 фичи</span>
+      </div>
+      <div class="col-body">
+
+        <div class="card">
+          <div class="card-top">
+            <span class="card-icon">🔊</span>
+            <span class="card-title">Временные голосовые каналы</span>
+            <span class="card-status cs-live"><span class="cs-dot"></span>Live</span>
+          </div>
+          <p class="card-desc">
+            Авто-создание и удаление голосовых каналов при входе/выходе. Каждый получает приватный канал с настройкой прав.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill tp-green">Голос</span>
+            <span class="tag-pill tp-green">Авто-создание</span>
+            <span class="tag-pill tp-green">Slash-команда</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <span class="card-icon">⭐</span>
+            <span class="card-title">Роли за реакции</span>
+            <span class="card-status cs-live"><span class="cs-dot"></span>Live</span>
+          </div>
+          <p class="card-desc">
+            Участники получают и снимают роли кликом по эмодзи-реакции. 
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill tp-green">Роли</span>
+            <span class="tag-pill tp-green">Реакции</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <span class="card-icon">🏆</span>
+            <span class="card-title">Система рейтинга</span>
+            <span class="card-status cs-live"><span class="cs-dot"></span>Live</span>
+          </div>
+          <p class="card-desc">
+            Подсчёт активности участников по разным параметрам: общение в чатах, присутствие в голосовых каналах и другие действия на сервере. Таблица лидеров и уровни.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill tp-green">Рейтинг</span>
+            <span class="tag-pill tp-green">Опыт</span>
+            <span class="tag-pill tp-green">Уровни</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ В ПЛАНАХ ══ -->
+    <div class="col col--plan">
+      <div class="col-header">
+        <div class="col-dot"></div>
+        <span class="col-title">В планах</span>
+        <span class="col-count">2 фичи</span>
+      </div>
+      <div class="col-body">
+
+        <div class="card">
+          <div class="card-top">
+            <span class="card-icon">🛡️</span>
+            <span class="card-title">Модерация</span>
+            <span class="card-status cs-queued"><span class="cs-dot"></span>Queued</span>
+          </div>
+          <p class="card-desc">
+            Ручные инструменты модерации: предупреждения, ограничения и управление участниками через slash-команды.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill tp-blue">Slash-команды</span>
+            <span class="tag-pill tp-blue">Логи</span>
+            <span class="tag-pill tp-muted">Ручная</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <span class="card-icon">📋</span>
+            <span class="card-title">Мульти-логирование</span>
+            <span class="card-status cs-queued"><span class="cs-dot"></span>Queued</span>
+          </div>
+          <p class="card-desc">
+            Гибкая система логов с точнейшей настройкой.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill tp-blue">Логи</span>
+            <span class="tag-pill tp-blue">Настройка</span>
+            <span class="tag-pill tp-muted">События</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ В ДАЛЁКОМ БУДУЩЕМ ══ -->
+    <div class="col col--far">
+      <div class="col-header">
+        <div class="col-dot"></div>
+        <span class="col-title">В далёком будущем</span>
+        <span class="col-count">1 фича</span>
+      </div>
+      <div class="col-body">
+
+        <div class="card">
+          <div class="card-top">
+            <span class="card-icon">🎵</span>
+            <span class="card-title">Музыкальная интеграция</span>
+            <span class="card-status cs-idea"><span class="cs-dot"></span>Идея</span>
+          </div>
+          <p class="card-desc">
+            Воспроизведение музыки в голосовых каналах с поддержкой популярных стриминговых сервисов.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill tp-red">YouTube</span>
+            <span class="tag-pill tp-green">Spotify</span>
+            <span class="tag-pill tp-teal">SoundCloud</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /.board -->
+
+  <div class="foot">
+    ELANCAG &nbsp;·&nbsp; Roadmap &nbsp;·&nbsp; made with ♥ for Discord
+  </div>
+
+</div><!-- /.wrap -->
+
+<script>
+const cvs = document.getElementById('cvs');
+const ctx = cvs.getContext('2d');
+let W, H, pts;
+const BLURPLE = [88, 101, 242];
+const TEAL    = [87, 242, 200];
+
+function resize() {
+  W = cvs.width  = window.innerWidth;
+  H = cvs.height = window.innerHeight;
+  pts = Array.from({ length: 70 }, () => mkPt());
+}
+function mkPt() {
+  const col = Math.random() > .35 ? BLURPLE : TEAL;
+  return {
+    x: Math.random() * W, y: Math.random() * H,
+    vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3,
+    r: Math.random() * 1.6 + .4, a: Math.random(), col,
+  };
+}
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  for (let i = 0; i < pts.length; i++) {
+    for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      if (d < 120) {
+        ctx.beginPath();
+        ctx.moveTo(pts[i].x, pts[i].y);
+        ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = `rgba(88,101,242,${(1 - d/120) * .14})`;
+        ctx.lineWidth = .5; ctx.stroke();
+      }
+    }
+  }
+  pts.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(${p.col.join(',')},${p.a * .7})`;
+    ctx.fill();
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < -10) p.x = W+10; if (p.x > W+10) p.x = -10;
+    if (p.y < -10) p.y = H+10; if (p.y > H+10) p.y = -10;
+  });
+  requestAnimationFrame(draw);
+}
+window.addEventListener('resize', resize);
+resize(); draw();
+</script>
+</body>
+</html>
