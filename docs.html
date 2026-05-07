@@ -580,7 +580,7 @@
       </a>
       <div>
         <div class="name">Elancag</div>
-        <div class="ver">v2.7.1 · docs</div>
+        <div class="ver">v2.9.0 · docs</div>
       </div>
     </div>
 
@@ -598,6 +598,7 @@
       <a class="nav-link" href="#cmd-setregion"><span class="emoji">🌍</span> /setregion</a>
       <a class="nav-link" href="#cmd-setstatus"><span class="emoji">💬</span> /setstatus</a>
       <a class="nav-link" href="#cmd-unic"><span class="emoji">✨</span> /unic</a>
+      <a class="nav-link" href="#cmd-rolereact"><span class="emoji">⭐</span> /rolereact</a>
     </div>
 
     <div class="nav-group">
@@ -1032,6 +1033,86 @@
           </div>
         </div>
 
+        <div class="cmd-card" id="cmd-rolereact">
+          <div class="cmd-header" onclick="toggle(this)">
+            <div class="cmd-icon">⭐</div>
+            <div class="cmd-meta">
+              <div class="cmd-name">/rolereact</div>
+              <div class="cmd-desc">Привязка ролей к реакциям на сообщения</div>
+              <div class="cmd-badges">
+                <span class="badge badge-admin">Только администраторы</span>
+                <span class="badge badge-cd">кд: 5 сек</span>
+                <span class="badge badge-ephem">виден только тебе</span>
+              </div>
+            </div>
+            <div class="cmd-toggle">⌄</div>
+          </div>
+          <div class="cmd-body">
+
+            <div class="usage-block">
+              <div class="usage-label">Синтаксис</div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">Slash</span>
+                <div class="usage-cmd">/rolereact add message_id:ID emoji:🎮 role:@Роль [channel:#канал]</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">Slash</span>
+                <div class="usage-cmd">/rolereact remove message_id:ID [emoji:🎮]</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">Slash</span>
+                <div class="usage-cmd">/rolereact list [message_id:ID]</div>
+              </div>
+            </div>
+
+            <h3>Параметры</h3>
+            <table>
+              <thead><tr><th>Параметр</th><th>Обязателен</th><th>Описание</th></tr></thead>
+              <tbody>
+                <tr><td><code>message_id</code></td><td>✅</td><td>ID сообщения, на которое привязывается реакция</td></tr>
+                <tr><td><code>emoji</code></td><td>✅ (add/remove)</td><td>Unicode или кастомный эмодзи сервера</td></tr>
+                <tr><td><code>role</code></td><td>✅ (add)</td><td>Роль, которую получит/снимет участник</td></tr>
+                <tr><td><code>channel</code></td><td>—</td><td>Канал с сообщением; если не указан — ищет по ID во всех каналах</td></tr>
+              </tbody>
+            </table>
+
+            <div class="note info">
+              <div class="note-icon">ℹ️</div>
+              <div>Нельзя привязать роль выше или равную твоей высшей роли, а также выше роли бота. Все ответы команды видны только тебе (ephemeral).</div>
+            </div>
+
+            <div class="example">
+              <div class="example-header"><div class="dot"></div> Привязать реакцию к роли</div>
+              <div class="example-body">
+                <div class="ex-msg"><span class="user">@admin</span> → <span class="cmd">/rolereact add message_id:112233445566 emoji:🎮 role:@Геймер channel:#правила</span></div>
+                <div class="ex-reply green">
+                  <div class="ex-embed-title">✅ Привязка добавлена</div>
+                  <div class="ex-embed-body">
+                    Реакция 🎮 на сообщении #правила → роль @Геймер<br>
+                    Бот добавил реакцию на сообщение автоматически.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-header"><div class="dot"></div> Посмотреть все привязки</div>
+              <div class="example-body">
+                <div class="ex-msg"><span class="user">@admin</span> → <span class="cmd">/rolereact list</span></div>
+                <div class="ex-reply">
+                  <div class="ex-embed-title">📋 Привязки реакций</div>
+                  <div class="ex-embed-body">
+                    Сообщение 112233445566 (#правила)<br>
+                    > 🎮 → @Геймер<br>
+                    > ⚔️ → @Рейдер
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </section>
 
       <!-- ── ПРАВА И ДОСТУП ─────────────────────────────────── -->
@@ -1077,6 +1158,7 @@
             <tr><td><code>/ping</code></td><td>5 секунд</td></tr>
             <tr><td><code>/help</code></td><td>5 секунд</td></tr>
             <tr><td><code>/unic</code></td><td>5 секунд</td></tr>
+            <tr><td><code>/rolereact</code></td><td>5 секунд</td></tr>
             <tr><td><code>/setregion</code></td><td>10 секунд</td></tr>
             <tr><td><code>/setstatus</code></td><td>10 секунд</td></tr>
             <tr><td><code>/info</code></td><td>15 секунд</td></tr>

@@ -155,6 +155,35 @@ body::after {
 
 .col-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
 
+.col-implemented {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(87,242,135,.05);
+  border: 1px solid rgba(87,242,135,.15);
+  border-radius: 9px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--sub);
+}
+.col-implemented .impl-label {
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(87,242,135,.5);
+  margin-bottom: 7px;
+}
+.col-implemented .impl-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  gap: 12px;
+}
+.col-implemented .impl-item:last-child { border-bottom: none; }
+.impl-name { color: #8899bb; }
+.impl-date { color: rgba(87,242,135,.6); white-space: nowrap; flex-shrink: 0; }
+
 .card {
   background: var(--panel2); border: 1px solid var(--rim2);
   border-radius: 11px; padding: 16px 16px 14px;
@@ -234,12 +263,11 @@ body::after {
   <div class="hero">
     <div class="hero-tag">
       <span class="dot"></span>
-      Публичная дорожная карта · v2.7.1
+      Публичная дорожная карта · v2.9.0
     </div>
     <h1>Roadmap</h1>
     <p class="hero-sub">
-      Что в разработке, что в планах<br>
-      и <em>куда движется Elancag</em>.
+	<em>Куда движется Elancag</em>.
     </p>
   </div>
 
@@ -250,7 +278,7 @@ body::after {
       <div class="col-header">
         <div class="col-dot"></div>
         <span class="col-title">Текущая</span>
-        <span class="col-count">3 фичи</span>
+        <span class="col-count">2 фичи</span>
       </div>
       <div class="col-body">
 
@@ -272,21 +300,6 @@ body::after {
 
         <div class="card">
           <div class="card-top">
-            <span class="card-icon">⭐</span>
-            <span class="card-title">Роли за реакции</span>
-            <span class="card-status cs-live"><span class="cs-dot"></span>Live</span>
-          </div>
-          <p class="card-desc">
-            Участники получают и снимают роли кликом по эмодзи-реакции. 
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill tp-green">Роли</span>
-            <span class="tag-pill tp-green">Реакции</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-top">
             <span class="card-icon">🏆</span>
             <span class="card-title">Система рейтинга</span>
             <span class="card-status cs-live"><span class="cs-dot"></span>Live</span>
@@ -302,6 +315,15 @@ body::after {
         </div>
 
       </div>
+
+      <div class="col-implemented">
+        <div class="impl-label">✓ реализовано</div>
+        <div class="impl-item">
+          <span class="impl-name">Роли за реакции</span>
+          <span class="impl-date">2025-05-06</span>
+        </div>
+      </div>
+
     </div>
 
     <!-- ══ В ПЛАНАХ ══ -->

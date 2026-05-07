@@ -390,16 +390,12 @@ body::after {
 
   <div class="tag">
     <span class="dot"></span>
-    Discord Bot · v2.7.1
+    Discord Bot · v2.9.0
   </div>
 
   <h1 class="hero-name" id="heroName"></h1>
 
-  <p class="subtitle">
-    Голосовые утилиты, каналы-статусники<br>
-    и управление сервером —<br>
-    <em>всё в одной команде.</em>
-  </p>
+  <p class="subtitle" id="heroSubtitle"></p>
 
   <div class="cta">
     <div class="btn-wrap">
@@ -426,6 +422,7 @@ body::after {
     <div class="feat"><span class="fi">⚡</span> Slash-команды</div>
     <div class="feat"><span class="fi">🛡️</span> Гибкие права</div>
     <div class="feat"><span class="fi">🔌</span> Рубильник фич</div>
+    <div class="feat"><span class="fi">⭐</span> Роли за реакции</div>
   </div>
 
   <div class="foot">
@@ -448,6 +445,22 @@ function pickName() {
   for (const n of NAMES) { r -= n.weight; if (r <= 0) return n.text; }
   return NAMES[0].text;
 }
+
+/* ── Subtitle variants ─────────────────────────── */
+const SUBTITLES = [
+  { html: 'Один бот —<br>максимум контроля над сервером.',               weight: 100 },
+  { html: 'Настраивается за секунды,<br>максимум контроля над сервером.', weight: 100 },
+  { html: '<em>67</em>',                                                    weight: 1   },
+];
+
+function pickSubtitle() {
+  const total = SUBTITLES.reduce((s, n) => s + n.weight, 0);
+  let r = Math.random() * total;
+  for (const n of SUBTITLES) { r -= n.weight; if (r <= 0) return n.html; }
+  return SUBTITLES[0].html;
+}
+
+document.getElementById('heroSubtitle').innerHTML = pickSubtitle();
 
 const chosenName = pickName();
 const container = document.getElementById('heroName');
