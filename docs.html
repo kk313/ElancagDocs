@@ -599,6 +599,7 @@
       <a class="nav-link" href="#cmd-setstatus"><span class="emoji">💬</span> /setstatus</a>
       <a class="nav-link" href="#cmd-unic"><span class="emoji">✨</span> /unic</a>
       <a class="nav-link" href="#cmd-rolereact"><span class="emoji">⭐</span> /rolereact</a>
+      <a class="nav-link" href="#cmd-log"><span class="emoji">📋</span> /log</a>
     </div>
 
     <div class="nav-group">
@@ -1115,6 +1116,104 @@
 
       </section>
 
+        <!-- /log -->
+        <div class="cmd-card" id="cmd-log">
+          <div class="cmd-header" onclick="toggle(this)">
+            <div class="cmd-icon">📋</div>
+            <div class="cmd-meta">
+              <div class="cmd-name">/log</div>
+              <div class="cmd-desc">Гибкая система логирования событий сервера</div>
+              <div class="cmd-badges">
+                <span class="badge badge-admin">Только администраторы</span>
+                <span class="badge badge-cd">кд: 5 сек</span>
+                <span class="badge badge-ephem">виден только тебе</span>
+              </div>
+            </div>
+            <div class="cmd-toggle">⌄</div>
+          </div>
+          <div class="cmd-body">
+            <p>Мульти-логирование позволяет настраивать отправку логов по разным категориям событий в разные каналы. Каждый тип события можно направить в отдельный канал или отключить независимо от остальных.</p>
+
+            <div class="usage-block">
+              <div class="usage-label">Субкоманды</div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/log set событие:message_delete канал:#логи-удалений</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/log list — посмотреть текущие настройки логов</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/log disable событие:message_delete — отключить тип события</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/log reset — сбросить все настройки логов</div>
+              </div>
+            </div>
+
+            <h3>Категории событий</h3>
+            <table>
+              <thead><tr><th>Событие</th><th>Описание</th></tr></thead>
+              <tbody>
+                <tr><td><code>message_delete</code></td><td>Удаление сообщений</td></tr>
+                <tr><td><code>message_edit</code></td><td>Редактирование сообщений</td></tr>
+                <tr><td><code>member_join</code></td><td>Вход участника на сервер</td></tr>
+                <tr><td><code>member_leave</code></td><td>Выход или кик участника</td></tr>
+                <tr><td><code>member_ban</code></td><td>Бан / разбан участника</td></tr>
+                <tr><td><code>role_update</code></td><td>Изменение ролей участника</td></tr>
+                <tr><td><code>channel_update</code></td><td>Создание / удаление / изменение каналов</td></tr>
+                <tr><td><code>voice</code></td><td>Вход / выход / перемещение в голосовых каналах</td></tr>
+              </tbody>
+            </table>
+
+            <div class="note info">
+              <div class="note-icon">ℹ️</div>
+              <div>Разные события можно направлять в разные каналы. Например, голосовые события — в #лог-войс, а удалённые сообщения — в #лог-чат.</div>
+            </div>
+
+            <div class="example">
+              <div class="example-header"><div class="dot"></div> Настройка логов удалений</div>
+              <div class="example-body">
+                <div class="ex-msg"><span class="user">@admin</span> → <span class="cmd">/log set событие:message_delete канал:#лог-удалений</span></div>
+                <div class="ex-reply green">
+                  <div class="ex-embed-title">✅ Лог настроен</div>
+                  <div class="ex-embed-body">
+                    Событие: удаление сообщений<br>
+                    Канал: #лог-удалений<br>
+                    Логирование активно.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-header"><div class="dot"></div> Просмотр текущих настроек</div>
+              <div class="example-body">
+                <div class="ex-msg"><span class="user">@admin</span> → <span class="cmd">/log list</span></div>
+                <div class="ex-reply">
+                  <div class="ex-embed-title">📋 Настройки логирования</div>
+                  <div class="ex-embed-body">
+                    ✅ message_delete → #лог-удалений<br>
+                    ✅ member_join → #лог-участников<br>
+                    ❌ message_edit — отключено<br>
+                    ❌ voice — не настроено
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note">
+              <div class="note-icon">⚠️</div>
+              <div>Фича находится в разработке. Команда <code>/log</code> появится на сервере после выхода обновления.</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
       <!-- ── ПРАВА И ДОСТУП ─────────────────────────────────── -->
       <section id="access">
         <h2><span class="section-emoji">🔒</span> Права и доступ</h2>
@@ -1159,6 +1258,7 @@
             <tr><td><code>/help</code></td><td>5 секунд</td></tr>
             <tr><td><code>/unic</code></td><td>5 секунд</td></tr>
             <tr><td><code>/rolereact</code></td><td>5 секунд</td></tr>
+            <tr><td><code>/log</code></td><td>5 секунд</td></tr>
             <tr><td><code>/setregion</code></td><td>10 секунд</td></tr>
             <tr><td><code>/setstatus</code></td><td>10 секунд</td></tr>
             <tr><td><code>/info</code></td><td>15 секунд</td></tr>
