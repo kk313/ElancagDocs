@@ -599,13 +599,7 @@
       <a class="nav-link" href="#cmd-setstatus"><span class="emoji">💬</span> /setstatus</a>
       <a class="nav-link" href="#cmd-unic"><span class="emoji">✨</span> /unic</a>
       <a class="nav-link" href="#cmd-rolereact"><span class="emoji">⭐</span> /rolereact</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-label">Рейтинг <span style="font-size:10px;color:#4a5e88">(откл.)</span></div>
-      <a class="nav-link" href="#cmd-rank"><span class="emoji">📊</span> /rank</a>
-      <a class="nav-link" href="#cmd-leaderboard"><span class="emoji">🏆</span> /leaderboard</a>
-      <a class="nav-link" href="#cmd-xp"><span class="emoji">⚡</span> /xp</a>
+      <a class="nav-link" href="#cmd-log"><span class="emoji">📋</span> /log</a>
     </div>
 
     <div class="nav-group">
@@ -622,7 +616,7 @@
     <div class="hero">
       <div class="hero-tag">📖 Руководство пользователя</div>
       <h1>Всё что нужно знать о <span>Elancag</span></h1>
-      <p>Slash-команды, голосовые утилиты, каналы-статусники — подробный гайд с примерами использования.</p>
+      <p>Slash-команды, голосовые утилиты, логирование событий, каналы-статусники — подробный гайд с примерами использования.</p>
     </div>
 
     <div class="content">
@@ -1123,22 +1117,15 @@
       </section>
 
 
-      <!-- ── РЕЙТИНГ ──────────────────────────────────────── -->
-      <section id="ranking">
-        <h2><span class="section-emoji">🏆</span> Система рейтинга <span style="font-size:13px;font-weight:400;color:#ed4245;margin-left:8px">⏸ временно отключена</span></h2>
-
-        <div class="note" style="border-color:rgba(237,66,69,.3);background:rgba(237,66,69,.07)">
-          <div class="note-icon">⚠️</div>
-          <div>Команды рейтинга (<code>/rank</code>, <code>/leaderboard</code>, <code>/xp</code>) реализованы и готовы, но временно деактивированы. Все данные сохранены и будут доступны после повторного включения.</div>
-        </div>
-
-        <div class="cmd-card" id="cmd-rank">
+        <!-- /log -->
+        <div class="cmd-card" id="cmd-log">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">📊</div>
+            <div class="cmd-icon">📋</div>
             <div class="cmd-meta">
-              <div class="cmd-name">/rank</div>
-              <div class="cmd-desc">Показать карточку уровня участника</div>
+              <div class="cmd-name">/log</div>
+              <div class="cmd-desc">Настройка системы Discord-логирования на сервере</div>
               <div class="cmd-badges">
+                <span class="badge badge-admin">Только администраторы</span>
                 <span class="badge badge-cd">кд: 5 сек</span>
                 <span class="badge badge-ephem">виден только тебе</span>
               </div>
@@ -1146,67 +1133,40 @@
             <div class="cmd-toggle">⌄</div>
           </div>
           <div class="cmd-body">
-            <div class="usage-block">
-              <div class="usage-label">Синтаксис</div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">Slash</span>
-                <div class="usage-cmd">/rank [user:@Участник]</div>
-              </div>
-            </div>
-            <p>Выводит embed с уровнем, XP, прогресс-баром до следующего уровня, голосовыми минутами, общим баллом, позицией в таблице лидеров и текущим модификатором опыта.</p>
-            <div class="note tip">
-              <div class="note-icon">💡</div>
-              <div>Если параметр <code>user</code> не указан — показывает карточку вызывающего.</div>
-            </div>
-          </div>
-        </div>
+            <p>Управляет системой логирования событий сервера в треды текстового канала. Каждая категория событий пишется в отдельный тред.</p>
 
-        <div class="cmd-card" id="cmd-leaderboard">
-          <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">🏆</div>
-            <div class="cmd-meta">
-              <div class="cmd-name">/leaderboard</div>
-              <div class="cmd-desc">Таблица лидеров сервера</div>
-              <div class="cmd-badges">
-                <span class="badge badge-cd">кд: 5 сек</span>
-              </div>
-            </div>
-            <div class="cmd-toggle">⌄</div>
-          </div>
-          <div class="cmd-body">
             <div class="usage-block">
-              <div class="usage-label">Синтаксис</div>
+              <div class="usage-label">Субкоманды</div>
               <div class="usage-row">
-                <span class="usage-type type-slash">Slash</span>
-                <div class="usage-cmd">/leaderboard [type:общий|xp|голос]</div>
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/log setup канал:#логи — включить логирование в канал</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/log disable — отключить логирование</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/log status — показать текущие настройки</div>
               </div>
             </div>
-            <p>Топ участников с пагинацией (◀▶). Три режима: <strong>общий</strong> (уровень + голос), <strong>xp</strong> (только опыт), <strong>голос</strong> (только голосовые минуты).</p>
-          </div>
-        </div>
 
-        <div class="cmd-card" id="cmd-xp">
-          <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">⚡</div>
-            <div class="cmd-meta">
-              <div class="cmd-name">/xp reset</div>
-              <div class="cmd-desc">Сброс рейтинга участника или всего сервера</div>
-              <div class="cmd-badges">
-                <span class="badge badge-admin">Только администраторы</span>
-                <span class="badge badge-cd">кд: 5 сек</span>
-              </div>
+            <h3>Категории событий</h3>
+            <table>
+              <thead><tr><th>Категория</th><th>Что логируется</th></tr></thead>
+              <tbody>
+                <tr><td>members</td><td>Вход/выход участников, обновления профилей</td></tr>
+                <tr><td>roles</td><td>Изменения ролей</td></tr>
+                <tr><td>messages</td><td>Удаление и редактирование сообщений</td></tr>
+                <tr><td>voice</td><td>Голосовая активность: вход, выход, переключение каналов</td></tr>
+                <tr><td>moderation</td><td>Баны и разбаны</td></tr>
+              </tbody>
+            </table>
+
+            <div class="note info">
+              <div class="note-icon">ℹ️</div>
+              <div>Бот автоматически создаёт треды под каждую категорию и восстанавливает их при реконнекте. Для работы логов боту нужны права на чтение истории и управление тредами в канале.</div>
             </div>
-            <div class="cmd-toggle">⌄</div>
-          </div>
-          <div class="cmd-body">
-            <div class="usage-block">
-              <div class="usage-label">Синтаксис</div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">Slash</span>
-                <div class="usage-cmd">/xp reset [user:@Участник]</div>
-              </div>
-            </div>
-            <p>Сбрасывает XP, уровень и голосовые минуты. Если <code>user</code> не указан — сбрасывает весь сервер (только Admin).</p>
           </div>
         </div>
 
