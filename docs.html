@@ -567,20 +567,24 @@
     .content { max-width: 100%; }
   }
 </style>
+<link rel="icon" href="./assets/public/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/public/site.css">
+<script src="./assets/public/site.js"></script>
 </head>
-<body>
+<body class="page-docs">
+<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="./assets/public/mark.svg" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html" aria-current="page">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div></header>
 
 <div class="shell">
 
   <!-- Sidebar -->
   <nav class="sidebar">
     <div class="sidebar-logo">
-      <a href="https://kk313.github.io/ElancagDocs/" style="text-decoration:none;display:contents;">
+      <a href="./index.html" style="text-decoration:none;display:contents;">
         <div class="icon" title="На главную" style="cursor:pointer;">🤖</div>
       </a>
       <div>
         <div class="name">Elancag</div>
-        <div class="ver">v3.1.1 · docs</div>
+        <div class="ver">Руководство · текущие возможности</div>
       </div>
     </div>
 
@@ -593,7 +597,6 @@
     <div class="nav-group">
       <div class="nav-group-label">Команды</div>
       <a class="nav-link" href="#cmd-ping"><span class="emoji">🏓</span> /ping</a>
-      <a class="nav-link" href="#cmd-info"><span class="emoji">🤖</span> /info</a>
       <a class="nav-link" href="#cmd-help"><span class="emoji">📖</span> /help</a>
       <a class="nav-link" href="#cmd-setregion"><span class="emoji">🌍</span> /setregion</a>
       <a class="nav-link" href="#cmd-setstatus"><span class="emoji">💬</span> /setstatus</a>
@@ -604,6 +607,8 @@
 
     <div class="nav-group">
       <div class="nav-group-label">Дополнительно</div>
+      <a class="nav-link" href="#web-panel">Веб-панель</a>
+      <a class="nav-link" href="#automation">Автоматизация</a>
       <a class="nav-link" href="#access"><span class="emoji">🔒</span> Права и доступ</a>
       <a class="nav-link" href="#cooldown"><span class="emoji">⏳</span> Кулдауны</a>
       <a class="nav-link" href="#regions"><span class="emoji">🌐</span> Список регионов</a>
@@ -616,7 +621,7 @@
     <div class="hero">
       <div class="hero-tag">📖 Руководство пользователя</div>
       <h1>Всё что нужно знать о <span>Elancag</span></h1>
-      <p>Slash-команды, голосовые утилиты, логирование событий, каналы-статусники — подробный гайд с примерами использования.</p>
+      <p>Slash-команды, голосовые утилиты, роли за реакции, логирование и веб-панель — подробный гайд по текущим возможностям.</p>
     </div>
 
     <div class="content">
@@ -624,7 +629,7 @@
       <!-- ── БЫСТРЫЙ СТАРТ ─────────────────────────────────── -->
       <section id="start">
         <h2><span class="section-emoji">🚀</span> Быстрый старт</h2>
-        <p>Бот уже работает на сервере — никакой установки не нужно. Просто начни вводить <code>/</code> в любом текстовом канале и Discord покажет список доступных команд.</p>
+        <p>Если бот уже добавлен на сервер, начни вводить <code>/</code> в любом текстовом канале и Discord покажет список доступных команд.</p>
         <div class="note info">
           <div class="note-icon">💡</div>
           <div>Если команды не появляются — попробуй перезайти в Discord или обнови приложение.</div>
@@ -640,9 +645,9 @@
         <p>Введи <code>/</code> в чате, выбери нужную команду из меню. Discord автоматически покажет параметры и подсказки.</p>
 
         <h3>Префиксные команды</h3>
-        <p>Пиши команду с префиксом <code>$$</code> прямо в чат. Сообщение и ответ бота <strong>удалятся автоматически</strong> через несколько секунд, чтобы не засорять канал.</p>
+        <p>По умолчанию пиши команду с префиксом <code>$$</code> прямо в чат. Префикс и удаление ответов настраиваются для каждого сервера; значение 0 отключает автоматическое удаление ответов. Исходное сообщение удаляется автоматически; удаление ответа зависит от выбранного интервала.</p>
 
-        <table>
+        <div class="table-scroll"><table>
           <thead>
             <tr><th>Способ</th><th>Пример</th><th>Особенности</th></tr>
           </thead>
@@ -655,7 +660,7 @@
             <tr>
               <td>Префикс</td>
               <td><code>$$ping</code></td>
-              <td>Ответ удаляется через ~8 сек</td>
+              <td>По умолчанию ответ удаляется через 8 сек; интервал настраивается</td>
             </tr>
             <tr>
               <td>Алиас</td>
@@ -663,7 +668,7 @@
               <td>Короткий псевдоним для <code>/setregion</code></td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="note">
           <div class="note-icon">⚠️</div>
@@ -724,51 +729,6 @@
             <div class="note tip">
               <div class="note-icon">🟢</div>
               <div>Зелёный — менее 100 мс, жёлтый — до 250 мс, красный — больше 250 мс.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- /info -->
-        <div class="cmd-card" id="cmd-info">
-          <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">🤖</div>
-            <div class="cmd-meta">
-              <div class="cmd-name">/info</div>
-              <div class="cmd-desc">Информация о боте: аптайм, серверов, пользователей, версия</div>
-              <div class="cmd-badges">
-                <span class="badge badge-cd">кд: 15 сек</span>
-              </div>
-            </div>
-            <div class="cmd-toggle">⌄</div>
-          </div>
-          <div class="cmd-body">
-            <div class="usage-block">
-              <div class="usage-label">Использование</div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/info</div>
-              </div>
-              <div class="usage-row">
-                <span class="usage-type type-prefix">PREFIX</span>
-                <div class="usage-cmd">$$info</div>
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-header"><div class="dot"></div> Пример ответа</div>
-              <div class="example-body">
-                <div class="ex-msg"><span class="user">@user</span> → <span class="cmd">/info</span></div>
-                <div class="ex-reply">
-                  <div class="ex-embed-title">🤖 Информация о боте</div>
-                  <div class="ex-embed-body">
-                    > Аптайм: `3д 14ч 22м 8с`<br>
-                    > Серверов: `12`<br>
-                    > Пользователей: `3842`<br>
-                    > Пинг WS: `67ms`<br>
-                    > Node.js: `v22.5.0`
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -911,13 +871,13 @@
 
             <div class="usage-block">
               <div class="usage-label">Параметры</div>
-              <table>
+              <div class="table-scroll"><table>
                 <thead><tr><th>Параметр</th><th>Обязательный</th><th>Описание</th></tr></thead>
                 <tbody>
                   <tr><td><code>канал</code></td><td>✅ Да</td><td>Голосовой или Stage-канал</td></tr>
                   <tr><td><code>статус</code></td><td>❌ Нет</td><td>Текст статуса. Если не указан — статус очищается. Максимум 500 символов.</td></tr>
                 </tbody>
-              </table>
+              </table></div>
             </div>
 
             <div class="usage-block">
@@ -1041,8 +1001,8 @@
               <div class="cmd-name">/rolereact</div>
               <div class="cmd-desc">Привязка ролей к реакциям на сообщения</div>
               <div class="cmd-badges">
-                <span class="badge badge-admin">Только администраторы</span>
-                <span class="badge badge-cd">кд: 5 сек</span>
+                <span class="badge badge-admin">Manage Roles</span>
+                <span class="badge badge-cd">кд: 3 сек</span>
                 <span class="badge badge-ephem">виден только тебе</span>
               </div>
             </div>
@@ -1067,7 +1027,7 @@
             </div>
 
             <h3>Параметры</h3>
-            <table>
+            <div class="table-scroll"><table>
               <thead><tr><th>Параметр</th><th>Обязателен</th><th>Описание</th></tr></thead>
               <tbody>
                 <tr><td><code>message_id</code></td><td>✅</td><td>ID сообщения, на которое привязывается реакция</td></tr>
@@ -1075,7 +1035,7 @@
                 <tr><td><code>role</code></td><td>✅ (add)</td><td>Роль, которую получит/снимет участник</td></tr>
                 <tr><td><code>channel</code></td><td>—</td><td>Канал с сообщением; если не указан — ищет по ID во всех каналах</td></tr>
               </tbody>
-            </table>
+            </table></div>
 
             <div class="note info">
               <div class="note-icon">ℹ️</div>
@@ -1125,8 +1085,8 @@
               <div class="cmd-name">/log</div>
               <div class="cmd-desc">Настройка системы Discord-логирования на сервере</div>
               <div class="cmd-badges">
-                <span class="badge badge-admin">Только администраторы</span>
-                <span class="badge badge-cd">кд: 5 сек</span>
+                <span class="badge badge-admin">Бот-администраторы</span>
+                <span class="badge badge-cd">кд: 3 сек</span>
                 <span class="badge badge-ephem">виден только тебе</span>
               </div>
             </div>
@@ -1152,16 +1112,17 @@
             </div>
 
             <h3>Категории событий</h3>
-            <table>
+            <div class="table-scroll"><table>
               <thead><tr><th>Категория</th><th>Что логируется</th></tr></thead>
               <tbody>
-                <tr><td>members</td><td>Вход/выход участников, обновления профилей</td></tr>
+                <tr><td>members</td><td>Вход и выход участников</td></tr>
+                <tr><td>profiles</td><td>Изменение ника, имени и аватара</td></tr>
                 <tr><td>roles</td><td>Изменения ролей</td></tr>
                 <tr><td>messages</td><td>Удаление и редактирование сообщений</td></tr>
                 <tr><td>voice</td><td>Голосовая активность: вход, выход, переключение каналов</td></tr>
-                <tr><td>moderation</td><td>Баны и разбаны</td></tr>
+                <tr><td>moderation</td><td>Баны, кики и разбаны</td></tr>
               </tbody>
-            </table>
+            </table></div>
 
             <div class="note info">
               <div class="note-icon">ℹ️</div>
@@ -1172,6 +1133,8 @@
 
       </section>
 
+<section id="web-panel"><h2>Веб-панель управления</h2><p>Панель работает вместе с ботом по адресу <code>http://localhost:3000</code> или на порту <code>API_PORT</code>. Публичный сайт содержит справку; доступа к настройкам и сессиям панели здесь нет.</p><h3>Как войти</h3><ul><li><strong>Владелец сервера:</strong> Discord OAuth2. В панели доступны только принадлежащие ему серверы, на которых присутствует бот.</li><li><strong>Супер-администратор:</strong> одноразовый код из консоли бота. Команда <code>admin-code</code> или <code>npm run admin-code</code> в окружении с тем же <code>DATA_DIR</code>.</li></ul><div class="note info"><div class="note-icon">ℹ</div><div>Код действует 5 минут и используется один раз. Новый код отменяет предыдущий; сессия супер-администратора действует 8 часов. <code>API_SECRET</code> больше не используется для входа.</div></div><h3>Классический интерфейс и Studio</h3><p>Оформление выбирается на странице входа и запоминается в браузере. В Studio выбор сервера открывает поиск по названию или ID, недавние серверы и страницы по 20 результатов.</p><div class="table-scroll"><table><thead><tr><th>Раздел</th><th>Что настраивается</th></tr></thead><tbody><tr><td>Общие настройки</td><td>Префикс, удаление ответов, канал журнала и бот-администраторы.</td></tr><tr><td>Команды</td><td>Включение, роли и пользователи, разрешённые или запрещённые каналы, задержка для каждой команды.</td></tr><tr><td>Автоматизация</td><td>Отдельные сценарии, список игр, текст статуса, интервал проверки, доступ и расширенная JSON-конфигурация.</td></tr><tr><td>Профиль сервера</td><td>Название, проверка участников, уведомления, фильтр медиаконтента и AFK-таймаут. Изменение требует права бота «Управлять сервером».</td></tr><tr><td>Инфо бота</td><td>CPU, память, аптайм и логи всего процесса. Доступно супер-администратору; ресурсы не распределяются между серверами.</td></tr></tbody></table></div><p>Кнопка <strong>«Сохранить всё»</strong> применяет изменения из всех разделов выбранного сервера. Переключатели включения и административные запреты применяются сразу. При ошибке сохранения несохранённые разделы остаются в форме.</p><h3>Защита доступа</h3><p>Панель проверяет права, использует защиту от CSRF, проверку OAuth state и ограничение попыток входа. Для доступа через интернет нужен HTTPS; коды и токены нельзя публиковать.</p></section>
+<section id="automation"><h2>Автоматизация голосовых каналов</h2><div class="table-scroll"><table><thead><tr><th>Сценарий</th><th>Поведение</th></tr></thead><tbody><tr><td><code>game_status</code></td><td>Меняет статус голосового канала, если участник играет в одну из указанных игр.</td></tr><tr><td><code>invisible_status</code></td><td>Меняет статус, если участник в голосовом канале отображается офлайн. Это косвенный признак невидимого режима, а не отдельный статус, полученный от Discord.</td></tr></tbody></table></div><p>Особенности включаются отдельно для каждого сервера. В Studio игры задаются отдельными строками; настройки применяются без перезапуска бота.</p><div class="note"><div class="note-icon">!</div><div>Каналы-статусники и рейтинг не подключены как доступные функции текущей сборки. Команда <code>/info</code> исключена из регистрации; системные показатели доступны в разделе «Инфо бота».</div></div></section>
       <!-- ── ПРАВА И ДОСТУП ─────────────────────────────────── -->
       <section id="access">
         <h2><span class="section-emoji">🔒</span> Права и доступ</h2>
@@ -1207,20 +1170,19 @@
       <section id="cooldown">
         <h2><span class="section-emoji">⏳</span> Кулдауны</h2>
 
-        <p>У каждой команды есть кулдаун — минимальный интервал между вызовами. При попытке вызвать команду слишком быстро бот напомнит, сколько нужно подождать.</p>
+        <p>Значения ниже — стандартные: администратор может изменить их в панели. У каждой команды есть кулдаун — минимальный интервал между вызовами. При попытке вызвать команду слишком быстро бот напомнит, сколько нужно подождать.</p>
 
-        <table>
+        <div class="table-scroll"><table>
           <thead><tr><th>Команда</th><th>Кулдаун</th></tr></thead>
           <tbody>
             <tr><td><code>/ping</code></td><td>5 секунд</td></tr>
             <tr><td><code>/help</code></td><td>5 секунд</td></tr>
             <tr><td><code>/unic</code></td><td>5 секунд</td></tr>
-            <tr><td><code>/rolereact</code></td><td>5 секунд</td></tr>
+            <tr><td><code>/rolereact</code></td><td>3 секунды</td></tr>
             <tr><td><code>/setregion</code></td><td>10 секунд</td></tr>
             <tr><td><code>/setstatus</code></td><td>10 секунд</td></tr>
-            <tr><td><code>/info</code></td><td>15 секунд</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="example">
           <div class="example-header"><div class="dot"></div> Ответ при кулдауне</div>
@@ -1323,5 +1285,6 @@
   window.addEventListener('scroll', updateActive, { passive: true });
   updateActive();
 </script>
+<footer class="public-site-footer"><span>Elancag · сведения по исходному коду</span><a href="./index.html">На главную</a><a href="./docs.html">Руководство</a><a href="./roadmap.html">Дорожная карта</a></footer>
 </body>
 </html>

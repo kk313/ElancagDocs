@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elancag — Roadmap</title>
-<link rel="icon" href="./favicon.ico" sizes="any">
-<link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="./site.webmanifest">
 <meta name="theme-color" content="#0e1015">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inconsolata:wght@300;400;500&display=swap');
@@ -236,34 +233,23 @@ body::after {
 }
 @media (max-width: 560px) { .topbar-link:not(.active) { display: none; } }
 </style>
+<link rel="icon" href="./assets/public/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/public/site.css">
+<script src="./assets/public/site.js"></script>
 </head>
-<body>
+<body class="page-roadmap">
+<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="./assets/public/mark.svg" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html">Документация</a><a href="./roadmap.html" aria-current="page">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div></header>
 
 <canvas id="cvs"></canvas>
 
-<nav class="topbar">
-  <a class="topbar-brand" href="https://kk313.github.io/ElancagDocs/">
-    <div class="logo-box">🤖</div>
-    <span class="logo-name">Elancag</span>
-  </a>
-  <div class="topbar-nav">
-    <a class="topbar-link" href="https://kk313.github.io/ElancagDocs/">Главная</a>
-    <a class="topbar-link" href="https://kk313.github.io/ElancagDocs/docs">Документация</a>
-    <a class="topbar-link active">Roadmap</a>
-    <a class="discord-btn" href="#" title="Официальный сервер" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-      </svg>
-    </a>
-  </div>
-</nav>
+
 
 <div class="wrap">
 
   <div class="hero">
     <div class="hero-tag">
       <span class="dot"></span>
-      Публичная дорожная карта · v3.1.1
+      Публичная дорожная карта
     </div>
     <h1>Roadmap</h1>
     <p class="hero-sub">
@@ -271,134 +257,7 @@ body::after {
     </p>
   </div>
 
-  <div class="board">
-
-    <!-- ══ ТЕКУЩАЯ ══ -->
-    <div class="col col--now">
-      <div class="col-header">
-        <div class="col-dot"></div>
-        <span class="col-title">Текущая</span>
-        <span class="col-count">2 фичи</span>
-      </div>
-      <div class="col-body">
-
-        <div class="card">
-          <div class="card-top">
-            <span class="card-icon">🔊</span>
-            <span class="card-title">Временные голосовые каналы</span>
-            <span class="card-status cs-live"><span class="cs-dot"></span>Live</span>
-          </div>
-          <p class="card-desc">
-            Авто-создание и удаление голосовых каналов при входе/выходе. Каждый получает приватный канал с настройкой прав.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill tp-green">Голос</span>
-            <span class="tag-pill tp-green">Авто-создание</span>
-            <span class="tag-pill tp-green">Slash-команда</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-top">
-            <span class="card-icon">📋</span>
-            <span class="card-title">Мульти-логирование</span>
-            <span class="card-status cs-live"><span class="cs-dot"></span>Live</span>
-          </div>
-          <p class="card-desc">
-            Гибкая система логов с точнейшей настройкой. Пять категорий событий в отдельных тредах: участники, роли, сообщения, голос, модерация.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill tp-green">Логи</span>
-            <span class="tag-pill tp-green">Настройка</span>
-            <span class="tag-pill tp-green">События</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="col-implemented">
-        <div class="impl-label">✓ реализовано</div>
-        <div class="impl-item">
-          <span class="impl-name">Роли за реакции</span>
-          <span class="impl-date">2025-05</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ══ В ПЛАНАХ ══ -->
-    <div class="col col--plan">
-      <div class="col-header">
-        <div class="col-dot"></div>
-        <span class="col-title">В планах</span>
-        <span class="col-count">1 фича</span>
-      </div>
-      <div class="col-body">
-
-        <div class="card">
-          <div class="card-top">
-            <span class="card-icon">🛡️</span>
-            <span class="card-title">Модерация</span>
-            <span class="card-status cs-queued"><span class="cs-dot"></span>Queued</span>
-          </div>
-          <p class="card-desc">
-            Ручные инструменты модерации: предупреждения, ограничения и управление участниками через slash-команды.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill tp-blue">Slash-команды</span>
-            <span class="tag-pill tp-blue">Логи</span>
-            <span class="tag-pill tp-muted">Ручная</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ══ В ДАЛЁКОМ БУДУЩЕМ ══ -->
-    <div class="col col--far">
-      <div class="col-header">
-        <div class="col-dot"></div>
-        <span class="col-title">В далёком будущем</span>
-        <span class="col-count">2 фичи</span>
-      </div>
-      <div class="col-body">
-
-        <div class="card">
-          <div class="card-top">
-            <span class="card-icon">🏆</span>
-            <span class="card-title">Система рейтинга</span>
-            <span class="card-status cs-idea"><span class="cs-dot"></span>Идея</span>
-          </div>
-          <p class="card-desc">
-            XP за сообщения и голосовую активность, уровни, таблица лидеров с пагинацией, роли за уровень и голосовые минуты, модификаторы опыта. Код реализован и ждёт включения.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill tp-muted">XP</span>
-            <span class="tag-pill tp-muted">Уровни</span>
-            <span class="tag-pill tp-muted">Голос</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-top">
-            <span class="card-icon">🎵</span>
-            <span class="card-title">Музыкальная интеграция</span>
-            <span class="card-status cs-idea"><span class="cs-dot"></span>Идея</span>
-          </div>
-          <p class="card-desc">
-            Воспроизведение музыки в голосовых каналах с поддержкой популярных стриминговых сервисов.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill tp-red">YouTube</span>
-            <span class="tag-pill tp-green">Spotify</span>
-            <span class="tag-pill tp-teal">SoundCloud</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div><!-- /.board -->
+<p class="public-brief">Доступные возможности сверены с текущими исходниками. Планы и идеи сохранены из прежней дорожной карты; сроки их реализации не объявлены.</p><div class="board"><section class="col col--now"><div class="col-header"><div class="col-dot"></div><span class="col-title">Уже доступно</span><span class="col-count">3</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Веб-панель Studio</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Два оформления, отдельный редактор команд и автоматизации, поиск серверов и общее сохранение настроек.</p><div class="card-tags"><span class="tag-pill tp-muted">Панель</span><span class="tag-pill tp-muted">Studio</span></div></article><article class="card"><div class="card-top"><span class="card-title">Логирование событий</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Шесть категорий: участники, профили, роли, сообщения, голос и модерация. Отдельные ветки и проверка их состояния.</p><div class="card-tags"><span class="tag-pill tp-muted">Логи</span><span class="tag-pill tp-muted">Discord</span></div></article><article class="card"><div class="card-top"><span class="card-title">Голосовая автоматизация</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Игровой статус и статус при наличии участников в невидимом режиме. Конфигурация и права задаются для каждого сервера.</p><div class="card-tags"><span class="tag-pill tp-muted">Голос</span><span class="tag-pill tp-muted">Настройки</span></div></article></div></section><section class="col col--plan"><div class="col-header"><div class="col-dot"></div><span class="col-title">Направления развития</span><span class="col-count">2</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Временные голосовые каналы</span><span class="card-status cs-queued">План</span></div><p class="card-desc">Автоматическое создание и удаление личных голосовых каналов. Идея из прежней дорожной карты; в текущей сборке не подключена.</p><div class="card-tags"><span class="tag-pill tp-muted">Голос</span></div></article><article class="card"><div class="card-top"><span class="card-title">Инструменты модерации</span><span class="card-status cs-queued">План</span></div><p class="card-desc">Предупреждения и управление участниками через команды. Направление из прежней дорожной карты, без заявленного срока.</p><div class="card-tags"><span class="tag-pill tp-muted">Модерация</span></div></article></div></section><section class="col col--far"><div class="col-header"><div class="col-dot"></div><span class="col-title">Идеи на будущее</span><span class="col-count">2</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Система рейтинга</span><span class="card-status cs-idea">Идея</span></div><p class="card-desc">Опыт, уровни и таблица лидеров. В текущей сборке система рейтинга недоступна; готовность реализации не заявляется.</p><div class="card-tags"><span class="tag-pill tp-muted">XP</span><span class="tag-pill tp-muted">Активность</span></div></article><article class="card"><div class="card-top"><span class="card-title">Музыкальная интеграция</span><span class="card-status cs-idea">Идея</span></div><p class="card-desc">Воспроизведение музыки в голосовых каналах. Исследовательская идея, не доступная функция и не обещание интеграций с сервисами.</p><div class="card-tags"><span class="tag-pill tp-muted">Музыка</span></div></article></div></section></div><!-- /.board -->
 
   <div class="foot">
     ELANCAG &nbsp;·&nbsp; Roadmap &nbsp;·&nbsp; made with ♥ for Discord
@@ -426,6 +285,9 @@ function mkPt() {
     r: Math.random() * 1.6 + .4, a: Math.random(), col,
   };
 }
+let animationFrame;
+function canAnimate(){return document.documentElement.dataset.siteDesign!=='studio'&&!document.hidden&&!matchMedia('(prefers-reduced-motion: reduce)').matches;}
+function syncAnimation(){cancelAnimationFrame(animationFrame);if(canAnimate())draw();else ctx.clearRect(0,0,W,H);}
 function draw() {
   ctx.clearRect(0, 0, W, H);
   for (let i = 0; i < pts.length; i++) {
@@ -450,10 +312,14 @@ function draw() {
     if (p.x < -10) p.x = W+10; if (p.x > W+10) p.x = -10;
     if (p.y < -10) p.y = H+10; if (p.y > H+10) p.y = -10;
   });
-  requestAnimationFrame(draw);
+  animationFrame=requestAnimationFrame(draw);
 }
+document.addEventListener('site-design-change',syncAnimation);
+document.addEventListener('visibilitychange',syncAnimation);
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',syncAnimation);
 window.addEventListener('resize', resize);
-resize(); draw();
+resize(); syncAnimation();
 </script>
+<footer class="public-site-footer"><span>Elancag · сведения по исходному коду</span><a href="./index.html">На главную</a><a href="./docs.html">Руководство</a><a href="./roadmap.html">Дорожная карта</a></footer>
 </body>
 </html>
