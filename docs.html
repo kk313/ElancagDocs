@@ -581,8 +581,6 @@
 .public-design button{font:500 11px 'Segoe UI',sans-serif;padding:6px 10px;border:1px solid transparent;border-radius:6px;background:transparent;color:#9daabb;cursor:pointer}
 .public-design button[aria-pressed=true]{background:#273449;color:#fff;border-color:#41516a}
 .public-topbar :focus-visible{outline:2px solid #8ea1ff;outline-offset:3px}
-.public-site-footer{position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:24px;border-top:1px solid var(--border,var(--rim));font:11px 'Segoe UI',sans-serif;color:var(--muted)}
-.public-site-footer a{color:var(--text);text-decoration:none}
 .page-home .wrap{min-height:calc(100dvh - 68px)}
 .page-docs .sidebar{top:68px;height:calc(100dvh - 68px)}
 .page-roadmap .wrap{padding-top:52px}
@@ -611,8 +609,6 @@ html[data-site-design=studio] .btn-primary{background:#356748;border-color:#3567
 html[data-site-design=studio] .btn-icon,html[data-site-design=studio] .fi{display:none}
 html[data-site-design=studio] .features{grid-column:1/-1;max-width:none;justify-content:flex-start;gap:8px;margin-top:30px;animation:none;opacity:1}
 html[data-site-design=studio] .feat{border-radius:6px;background:#eaf0e2;color:#81946f;border-color:#dfe8d6;font-family:var(--sans);font-size:10px;padding:7px 11px}
-html[data-site-design=studio] .foot{color:#a0ad94;font-family:var(--sans);font-size:10px;letter-spacing:1px}
-html[data-site-design=studio] .page-home .foot{grid-column:1/-1;text-align:left;align-self:end;padding-top:36px}
 html[data-site-design=studio] .public-showcase{display:block;grid-column:2;grid-row:1/5;align-self:center;padding:26px;background:#e8eee0;border:1px solid #d8e3cc;border-radius:24px;transform:rotate(2deg);box-shadow:0 20px 60px #4c693312}
 .public-showcase-title{font-size:9px;letter-spacing:2px;color:#8a9b79;margin-bottom:22px}.public-showcase h2{font-size:26px;line-height:1.25;font-weight:600;letter-spacing:-.8px;color:#47633b;margin-bottom:26px}.public-showcase-row{padding:17px;background:#f9fbf5;border:1px solid #dce6d2;border-radius:12px;margin-top:10px;display:flex;gap:15px;align-items:center}.public-showcase-row>span{color:#a9b79a;font:10px var(--mono)}.public-showcase-row strong{font-size:13px;font-weight:600;color:#526f45}.public-showcase-row small{display:block;font-size:10px;color:#97a889;margin-top:4px}
 html[data-site-design=studio] .page-docs .sidebar{background:#eaf0e3;border-color:#dce6d2;width:248px;padding-top:28px}
@@ -621,7 +617,7 @@ html[data-site-design=studio] .sidebar-logo .name{color:#34543b}
 html[data-site-design=studio] .nav-group-label{font-size:9px;letter-spacing:1.6px;color:#9bab8b}
 html[data-site-design=studio] .nav-link{color:#7f936f;font-size:12px;border-radius:8px;margin:3px 10px;padding:9px 12px}
 html[data-site-design=studio] .nav-link.active{background:#fff;color:#3e653e;box-shadow:0 2px 5px #2d492508}
-html[data-site-design=studio] .nav-link .emoji,html[data-site-design=studio] .section-emoji,html[data-site-design=studio] .cmd-icon,html[data-site-design=studio] .note-icon{display:none}
+html[data-site-design=studio] .section-emoji,html[data-site-design=studio] .note-icon{display:none}
 html[data-site-design=studio] .page-docs .hero{background:transparent;padding:50px 48px 36px;border-color:#e2e9da}
 html[data-site-design=studio] .page-docs .hero::before{display:none}
 html[data-site-design=studio] .hero-tag{background:#edf3e5;border-color:#dbe7d0;color:#819870;font-family:var(--sans);font-size:10px}
@@ -654,9 +650,8 @@ html[data-site-design=studio] .card-title{color:#547447;font-size:14px;font-weig
 html[data-site-design=studio] .card-desc{color:#8b9e7a;font-size:12px}
 html[data-site-design=studio] .card-status{background:#eef4e7;border-color:#d5e4c9;color:#7e966b;font-size:8px}
 html[data-site-design=studio] .public-brief{text-align:left;color:#8a9d7b}
-html[data-site-design=studio] .public-site-footer{background:#eef3e7;color:#9aaa8b}
 @media(max-width:900px){.public-topbar{padding:12px 18px;gap:14px}.public-links{gap:12px}html[data-site-design=studio] .page-home .wrap{column-gap:28px;padding:48px 28px}html[data-site-design=studio] .page-docs .sidebar{width:210px}html[data-site-design=studio] .page-docs .hero{padding:36px 28px}html[data-site-design=studio] .page-docs .content{padding:28px}}
-@media(max-width:680px){.public-topbar{flex-wrap:wrap;gap:12px;min-height:100px;padding:12px 16px}.public-brand{font-size:14px}.public-links{order:3;width:100%;justify-content:space-between;gap:8px}.public-links a{font-size:11px}.public-design button{padding:6px 8px}.page-docs .sidebar{top:100px;height:calc(100dvh - 100px)}.page-docs section,.page-docs .cmd-card{scroll-margin-top:124px}html[data-site-design=studio] .page-home .wrap{display:flex;align-items:flex-start;gap:0;padding:40px 24px;min-height:0}html[data-site-design=studio] .hero-name{font-size:68px;letter-spacing:-4px}html[data-site-design=studio] .subtitle{font-size:16px}html[data-site-design=studio] .public-showcase{width:100%;max-width:420px;transform:none;margin:14px 0 20px;padding:22px}.public-showcase h2{font-size:22px}html[data-site-design=studio] .features{margin-top:20px}html[data-site-design=studio] .page-docs .hero h1{font-size:30px}html[data-site-design=studio] .page-docs .hero{padding:32px 20px}html[data-site-design=studio] .page-docs .content{padding:24px 18px}html[data-site-design=studio] .page-roadmap .wrap{padding:36px 18px}html[data-site-design=studio] .page-roadmap .hero h1{font-size:42px}html[data-site-design=studio] .cmd-body{padding:18px}.public-site-footer{font-size:10px;gap:12px}}
+@media(max-width:680px){.public-topbar{flex-wrap:wrap;gap:12px;min-height:100px;padding:12px 16px}.public-brand{font-size:14px}.public-links{order:3;width:100%;justify-content:space-between;gap:8px}.public-links a{font-size:11px}.public-design button{padding:6px 8px}.page-docs .sidebar{top:100px;height:calc(100dvh - 100px)}.page-docs section,.page-docs .cmd-card{scroll-margin-top:124px}html[data-site-design=studio] .page-home .wrap{display:flex;align-items:flex-start;gap:0;padding:40px 24px;min-height:0}html[data-site-design=studio] .hero-name{font-size:68px;letter-spacing:-4px}html[data-site-design=studio] .subtitle{font-size:16px}html[data-site-design=studio] .public-showcase{width:100%;max-width:420px;transform:none;margin:14px 0 20px;padding:22px}.public-showcase h2{font-size:22px}html[data-site-design=studio] .features{margin-top:20px}html[data-site-design=studio] .page-docs .hero h1{font-size:30px}html[data-site-design=studio] .page-docs .hero{padding:32px 20px}html[data-site-design=studio] .page-docs .content{padding:24px 18px}html[data-site-design=studio] .page-roadmap .wrap{padding:36px 18px}html[data-site-design=studio] .page-roadmap .hero h1{font-size:42px}html[data-site-design=studio] .cmd-body{padding:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.tag,.cta,.features,.subtitle,.letter{opacity:1!important;transform:none!important}#cvs{display:none}}
 html[data-site-design=studio] .page-docs :is(p,td,.flow-text,.region-item){color:#647b56}
 html[data-site-design=studio] .page-docs :is(.note,.note.info,.note.tip){color:#536e45}
@@ -669,11 +664,29 @@ html[data-site-design=studio] .page-roadmap .hero::before{display:none}
 html[data-site-design=studio] .page-roadmap .hero-sub{margin:0;color:#728a61}
 html[data-site-design=studio] .page-roadmap .hero-sub em{color:#5a7b48}
 html[data-site-design=studio] .page-roadmap .board{padding:0 0 48px;max-width:none}
-#web-panel ul{padding-left:22px;margin:12px 0 20px}
-#web-panel li{padding:5px 0}
 html[data-site-design=studio] .hero-name{animation:none;opacity:1;padding:0}
-html[data-site-design=studio] .foot{animation:none;opacity:1}
-@media(prefers-reduced-motion:reduce){.hero-name,.hero h1,.hero-tag,.hero-sub,.board,.foot{opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.hero-name,.hero h1,.hero-tag,.hero-sub,.board{opacity:1!important;transform:none!important}}
+
+/* Keep flex content shrinkable beside the documentation navigation. */
+.page-docs .main{min-width:0}
+
+.public-invite{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:8px;background:#444fd2;color:#fff;font-weight:650;font-size:12px;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.public-invite:hover{background:#3944bd}
+html[data-site-design=studio] .public-invite{background:#356748}
+html[data-site-design=studio] .public-invite:hover{background:#285339}
+@media(max-width:960px){
+  .public-topbar{flex-wrap:wrap;gap:8px 12px;min-height:112px;padding:12px 16px}
+  .public-links{order:3;width:100%;justify-content:space-between}
+  .page-docs .sidebar{top:112px;height:calc(100dvh - 112px)}
+  .page-docs section,.page-docs .cmd-card{scroll-margin-top:136px}
+}
+@media(max-width:440px){
+  .public-topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:152px}
+  .public-invite{grid-column:2;grid-row:1}
+  .public-design{grid-column:1/-1;justify-self:start}
+  .public-links{grid-column:1/-1}
+  .page-docs section,.page-docs .cmd-card{scroll-margin-top:176px}
+}
 </style>
 <script data-public-script>
 (() => {
@@ -696,7 +709,6 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
       header.setAttribute('aria-controls',body.id);
       header.setAttribute('aria-expanded',String(header.closest('.cmd-card').classList.contains('open')));
       header.addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();header.click();}});
-      header.addEventListener('click',()=>queueMicrotask(()=>header.setAttribute('aria-expanded',String(header.closest('.cmd-card').classList.contains('open')))));
     });
   });
   document.addEventListener('click',event=>{
@@ -712,7 +724,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
 <!-- public-assets:end -->
 </head>
 <body class="page-docs">
-<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html" aria-current="page">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div></header>
+<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html" aria-current="page">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div><a class="public-invite" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить бота</a></header>
 
 <div class="shell">
 
@@ -724,34 +736,35 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
       </a>
       <div>
         <div class="name">Elancag</div>
-        <div class="ver">Руководство · текущие возможности</div>
+        <div class="ver">Сборка <span data-build-version>v3.2.0-dev.0</span></div>
       </div>
     </div>
 
     <div class="nav-group">
       <div class="nav-group-label">Начало</div>
-      <a class="nav-link" href="#start"><span class="emoji">🚀</span> Быстрый старт</a>
-      <a class="nav-link" href="#invoke"><span class="emoji">⌨️</span> Как вызвать бота</a>
+      <a class="nav-link" href="#start"><span class="emoji" aria-hidden="true">🚀</span> Быстрый старт</a>
+      <a class="nav-link" href="#invoke"><span class="emoji" aria-hidden="true">⌨️</span> Как вызвать бота</a>
     </div>
 
     <div class="nav-group">
       <div class="nav-group-label">Команды</div>
-      <a class="nav-link" href="#cmd-ping"><span class="emoji">🏓</span> /ping</a>
-      <a class="nav-link" href="#cmd-help"><span class="emoji">📖</span> /help</a>
-      <a class="nav-link" href="#cmd-setregion"><span class="emoji">🌍</span> /setregion</a>
-      <a class="nav-link" href="#cmd-setstatus"><span class="emoji">💬</span> /setstatus</a>
-      <a class="nav-link" href="#cmd-unic"><span class="emoji">✨</span> /unic</a>
-      <a class="nav-link" href="#cmd-rolereact"><span class="emoji">⭐</span> /rolereact</a>
-      <a class="nav-link" href="#cmd-log"><span class="emoji">📋</span> /log</a>
+      <a class="nav-link" href="#cmd-ping"><span class="emoji" aria-hidden="true">🏓</span> /ping</a>
+      <a class="nav-link" href="#cmd-help"><span class="emoji" aria-hidden="true">📖</span> /help</a>
+      <a class="nav-link" href="#cmd-setregion"><span class="emoji" aria-hidden="true">🌍</span> /setregion</a>
+      <a class="nav-link" href="#cmd-setstatus"><span class="emoji" aria-hidden="true">💬</span> /setstatus</a>
+      <a class="nav-link" href="#cmd-unic"><span class="emoji" aria-hidden="true">✨</span> /unic</a>
+      <a class="nav-link" href="#cmd-rolereact"><span class="emoji" aria-hidden="true">⭐</span> /rolereact</a>
+      <a class="nav-link" href="#cmd-rank"><span class="emoji" aria-hidden="true">🏆</span> /rank</a>
+      <a class="nav-link" href="#cmd-settings"><span class="emoji" aria-hidden="true">⚙️</span> /settings</a>
+      <a class="nav-link" href="#cmd-log"><span class="emoji" aria-hidden="true">📋</span> /log</a>
     </div>
 
     <div class="nav-group">
       <div class="nav-group-label">Дополнительно</div>
-      <a class="nav-link" href="#web-panel">Веб-панель</a>
-      <a class="nav-link" href="#automation">Автоматизация</a>
-      <a class="nav-link" href="#access"><span class="emoji">🔒</span> Права и доступ</a>
-      <a class="nav-link" href="#cooldown"><span class="emoji">⏳</span> Кулдауны</a>
-      <a class="nav-link" href="#regions"><span class="emoji">🌐</span> Список регионов</a>
+      <a class="nav-link" href="#automation"><span class="emoji" aria-hidden="true">🤖</span> Автоматизация</a>
+      <a class="nav-link" href="#access"><span class="emoji" aria-hidden="true">🔒</span> Права и доступ</a>
+      <a class="nav-link" href="#cooldown"><span class="emoji" aria-hidden="true">⏳</span> Кулдауны</a>
+      <a class="nav-link" href="#regions"><span class="emoji" aria-hidden="true">🌐</span> Список регионов</a>
     </div>
   </nav>
 
@@ -759,9 +772,9 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
   <div class="main">
 
     <div class="hero">
-      <div class="hero-tag">📖 Руководство пользователя</div>
+      <div class="hero-tag">📖 Руководство · <span data-build-version>v3.2.0-dev.0</span></div>
       <h1>Всё что нужно знать о <span>Elancag</span></h1>
-      <p>Slash-команды, голосовые утилиты, роли за реакции, логирование и веб-панель — подробный гайд по текущим возможностям.</p>
+      <p>Slash-команды, голосовые утилиты, роли за реакции, логирование, рейтинг и настройки сервера в Discord.</p>
     </div>
 
     <div class="content">
@@ -826,7 +839,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
         <!-- /ping -->
         <div class="cmd-card open" id="cmd-ping">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">🏓</div>
+            <div class="cmd-icon" aria-hidden="true">🏓</div>
             <div class="cmd-meta">
               <div class="cmd-name">/ping</div>
               <div class="cmd-desc">Проверить задержку бота до серверов Discord</div>
@@ -876,7 +889,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
         <!-- /help -->
         <div class="cmd-card" id="cmd-help">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">📖</div>
+            <div class="cmd-icon" aria-hidden="true">📖</div>
             <div class="cmd-meta">
               <div class="cmd-name">/help</div>
               <div class="cmd-desc">Интерактивная справка по всем командам бота</div>
@@ -913,7 +926,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
         <!-- /setregion -->
         <div class="cmd-card" id="cmd-setregion">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">🌍</div>
+            <div class="cmd-icon" aria-hidden="true">🌍</div>
             <div class="cmd-meta">
               <div class="cmd-name">/setregion</div>
               <div class="cmd-desc">Изменить регион голосового канала, в котором ты находишься</div>
@@ -995,7 +1008,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
         <!-- /setstatus -->
         <div class="cmd-card" id="cmd-setstatus">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">💬</div>
+            <div class="cmd-icon" aria-hidden="true">💬</div>
             <div class="cmd-meta">
               <div class="cmd-name">/setstatus</div>
               <div class="cmd-desc">Установить или очистить статус голосового канала</div>
@@ -1066,7 +1079,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
         <!-- /unic -->
         <div class="cmd-card" id="cmd-unic">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">✨</div>
+            <div class="cmd-icon" aria-hidden="true">✨</div>
             <div class="cmd-meta">
               <div class="cmd-name">/unic</div>
               <div class="cmd-desc">Управление уникальными командами и особенностями сервера</div>
@@ -1136,7 +1149,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
 
         <div class="cmd-card" id="cmd-rolereact">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">⭐</div>
+            <div class="cmd-icon" aria-hidden="true">⭐</div>
             <div class="cmd-meta">
               <div class="cmd-name">/rolereact</div>
               <div class="cmd-desc">Привязка ролей к реакциям на сообщения</div>
@@ -1214,13 +1227,115 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
           </div>
         </div>
 
-      </section>
+        <!-- /rank -->
+        <div class="cmd-card" id="cmd-rank">
+          <div class="cmd-header" onclick="toggle(this)">
+            <div class="cmd-icon" aria-hidden="true">🏆</div>
+            <div class="cmd-meta">
+              <div class="cmd-name">/rank</div>
+              <div class="cmd-desc">Профиль участника и таблица лидеров</div>
+              <div class="cmd-badges">
+                <span class="badge badge-cd">кд: 5 сек</span>
+              </div>
+            </div>
+            <div class="cmd-toggle">⌄</div>
+          </div>
+          <div class="cmd-body">
+            <p>Карточка профиля показывает актуальный аватар, серверный никнейм, имя Discord, уровень, место и прогресс до следующего уровня. В таблицу попадают до 10 лидеров по общему XP. У каждого участника указаны уровень, число сообщений и время в голосе.</p>
 
+            <div class="usage-block">
+              <div class="usage-label">Использование</div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/rank profile — свой профиль</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/rank profile user:@Мария — профиль другого участника</div>
+              </div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/rank top — таблица лидеров сервера</div>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-header"><div class="dot"></div> Пример ответа</div>
+              <div class="example-body">
+                <div class="ex-msg"><span class="user">@Мария</span> → <span class="cmd">/rank profile</span></div>
+                <div class="ex-reply">
+                  <div class="ex-embed-title">🏆 Мария</div>
+                  <div class="ex-embed-body">
+                    Уровень 3 · место № 2 · 1 260 XP<br>
+                    До следующего уровня ещё 340 XP<br>
+                    260 сообщений · 2 ч 35 мин в голосе
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note info">
+              <div class="note-icon" aria-hidden="true">ℹ️</div>
+              <div>Автор вызова может открыть свой профиль, перейти к лидерам или обновить данные кнопками под ответом. Сообщение удаляется через 15 минут после отправки. Обновление сохраняет исходный срок удаления.</div>
+            </div>
+
+            <h3>Опыт и активность</h3>
+            <p>Рейтинг включается для каждого сервера отдельно. По умолчанию бот начисляет 15 XP за подходящее сообщение с паузой в 60 секунд и 10 XP за полную минуту в голосе с двумя подходящими участниками. Настройки и множители могут менять эти значения.</p>
+            <p>Администратор может сбросить опыт и статистику участника или запретить ему дальнейшее начисление за сообщения и голос. Запрет сохраняет уже набранный XP.</p>
+            <p>Счётчики активности ведутся отдельно от XP. Короткие сообщения и сообщения на кулдауне учитываются в статистике. Время в голосе считается и в одиночку, и с выключенным микрофоном. AFK-канал исключён. Старые данные содержат только активность, ранее зачтённую для XP.</p>
+          </div>
+        </div>
+
+        <!-- /settings -->
+        <div class="cmd-card" id="cmd-settings">
+          <div class="cmd-header" onclick="toggle(this)">
+            <div class="cmd-icon" aria-hidden="true">⚙️</div>
+            <div class="cmd-meta">
+              <div class="cmd-name">/settings</div>
+              <div class="cmd-desc">Личное меню настроек в Discord</div>
+              <div class="cmd-badges">
+                <span class="badge badge-perm">Управлять сервером</span>
+                <span class="badge badge-ephem">виден только тебе</span>
+              </div>
+            </div>
+            <div class="cmd-toggle">⌄</div>
+          </div>
+          <div class="cmd-body">
+            <p>Открывает настройки текущего сервера прямо в Discord. Выберите раздел, чтобы изменить префикс, задержки и доступ команд, сценарии автоматизации, рейтинг или журнал событий. Изменения применяются сразу.</p>
+
+            <div class="usage-block">
+              <div class="usage-label">Использование</div>
+              <div class="usage-row">
+                <span class="usage-type type-slash">SLASH</span>
+                <div class="usage-cmd">/settings — открыть меню настроек</div>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-header"><div class="dot"></div> Пример ответа</div>
+              <div class="example-body">
+                <div class="ex-msg"><span class="user">@Администратор</span> → <span class="cmd">/settings</span></div>
+                <div class="ex-reply">
+                  <div class="ex-embed-title">⚙️ Центр управления</div>
+                  <div class="ex-embed-body">
+                    Выберите раздел. Например, «Особенности и рейтинг» → «Рейтинг участников» → «Голосовой опыт».
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p>Настройки рейтинга включают текстовый и голосовой XP, условия начисления и множители для ролей, каналов и участников. Для изменения профиля Discord-сервера боту требуется право «Управлять сервером».</p>
+            <div class="note info">
+              <div class="note-icon" aria-hidden="true">ℹ️</div>
+              <div>Меню доступно автору вызова 15 минут. По умолчанию Discord показывает команду участникам с правом «Управлять сервером».</div>
+            </div>
+          </div>
+        </div>
 
         <!-- /log -->
         <div class="cmd-card" id="cmd-log">
           <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon">📋</div>
+            <div class="cmd-icon" aria-hidden="true">📋</div>
             <div class="cmd-meta">
               <div class="cmd-name">/log</div>
               <div class="cmd-desc">Настройка системы Discord-логирования на сервере</div>
@@ -1273,8 +1388,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
 
       </section>
 
-<section id="web-panel"><h2>Веб-панель управления</h2><p>Панель работает вместе с ботом по адресу <code>http://localhost:3000</code> или на порту <code>API_PORT</code>. Публичный сайт содержит справку; доступа к настройкам и сессиям панели здесь нет.</p><h3>Как войти</h3><ul><li><strong>Владелец сервера:</strong> Discord OAuth2. В панели доступны только принадлежащие ему серверы, на которых присутствует бот.</li><li><strong>Супер-администратор:</strong> одноразовый код из консоли бота. Команда <code>admin-code</code> или <code>npm run admin-code</code> в окружении с тем же <code>DATA_DIR</code>.</li></ul><div class="note info"><div class="note-icon">ℹ</div><div>Код действует 5 минут и используется один раз. Новый код отменяет предыдущий; сессия супер-администратора действует 8 часов. <code>API_SECRET</code> больше не используется для входа.</div></div><h3>Классический интерфейс и Studio</h3><p>Оформление выбирается на странице входа и запоминается в браузере. В Studio выбор сервера открывает поиск по названию или ID, недавние серверы и страницы по 20 результатов.</p><div class="table-scroll"><table><thead><tr><th>Раздел</th><th>Что настраивается</th></tr></thead><tbody><tr><td>Общие настройки</td><td>Префикс, удаление ответов, канал журнала и бот-администраторы.</td></tr><tr><td>Команды</td><td>Включение, роли и пользователи, разрешённые или запрещённые каналы, задержка для каждой команды.</td></tr><tr><td>Автоматизация</td><td>Отдельные сценарии, список игр, текст статуса, интервал проверки, доступ и расширенная JSON-конфигурация.</td></tr><tr><td>Профиль сервера</td><td>Название, проверка участников, уведомления, фильтр медиаконтента и AFK-таймаут. Изменение требует права бота «Управлять сервером».</td></tr><tr><td>Инфо бота</td><td>CPU, память, аптайм и логи всего процесса. Доступно супер-администратору; ресурсы не распределяются между серверами.</td></tr></tbody></table></div><p>Кнопка <strong>«Сохранить всё»</strong> применяет изменения из всех разделов выбранного сервера. Переключатели включения и административные запреты применяются сразу. При ошибке сохранения несохранённые разделы остаются в форме.</p><h3>Защита доступа</h3><p>Панель проверяет права, использует защиту от CSRF, проверку OAuth state и ограничение попыток входа. Для доступа через интернет нужен HTTPS; коды и токены нельзя публиковать.</p></section>
-<section id="automation"><h2>Автоматизация голосовых каналов</h2><div class="table-scroll"><table><thead><tr><th>Сценарий</th><th>Поведение</th></tr></thead><tbody><tr><td><code>game_status</code></td><td>Меняет статус голосового канала, если участник играет в одну из указанных игр.</td></tr><tr><td><code>invisible_status</code></td><td>Меняет статус, если участник в голосовом канале отображается офлайн. Это косвенный признак невидимого режима, а не отдельный статус, полученный от Discord.</td></tr></tbody></table></div><p>Особенности включаются отдельно для каждого сервера. В Studio игры задаются отдельными строками; настройки применяются без перезапуска бота.</p><div class="note"><div class="note-icon">!</div><div>Каналы-статусники и рейтинг не подключены как доступные функции текущей сборки. Команда <code>/info</code> исключена из регистрации; системные показатели доступны в разделе «Инфо бота».</div></div></section>
+<section id="automation"><h2><span class="section-emoji" aria-hidden="true">🤖</span> Автоматизация голосовых каналов</h2><div class="table-scroll"><table><thead><tr><th>Сценарий</th><th>Поведение</th></tr></thead><tbody><tr><td><code>game_status</code></td><td>Меняет статус голосового канала, если участник играет в одну из указанных игр.</td></tr><tr><td><code>invisible_status</code></td><td>Меняет статус, если участник в голосовом канале отображается офлайн. Это косвенный признак невидимого режима, а не отдельный статус, полученный от Discord.</td></tr></tbody></table></div><p>Особенности включаются отдельно для каждого сервера. Настройки применяются без перезапуска бота.</p><div class="note"><div class="note-icon">!</div><div>Каналы-статусники пока недоступны. Команда <code>/info</code> исключена из регистрации.</div></div></section>
       <!-- ── ПРАВА И ДОСТУП ─────────────────────────────────── -->
       <section id="access">
         <h2><span class="section-emoji">🔒</span> Права и доступ</h2>
@@ -1288,7 +1402,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
           </div>
           <div class="flow-step">
             <div class="flow-num active">2</div>
-            <div class="flow-text"><strong>Серверный бот-админ</strong> — те же права, но только на своём сервере. Назначается администратором через HTTP API или веб-панель.</div>
+            <div class="flow-text"><strong>Серверный бот-админ</strong> — те же права, но только на своём сервере. Назначается администратором бота.</div>
           </div>
           <div class="flow-step">
             <div class="flow-num">3</div>
@@ -1310,12 +1424,13 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
       <section id="cooldown">
         <h2><span class="section-emoji">⏳</span> Кулдауны</h2>
 
-        <p>Значения ниже — стандартные: администратор может изменить их в панели. У каждой команды есть кулдаун — минимальный интервал между вызовами. При попытке вызвать команду слишком быстро бот напомнит, сколько нужно подождать.</p>
+        <p>Значения ниже — стандартные и могут отличаться в зависимости от настроек сервера. У каждой команды есть кулдаун — минимальный интервал между вызовами. При попытке вызвать команду слишком быстро бот напомнит, сколько нужно подождать.</p>
 
         <div class="table-scroll"><table>
           <thead><tr><th>Команда</th><th>Кулдаун</th></tr></thead>
           <tbody>
             <tr><td><code>/ping</code></td><td>5 секунд</td></tr>
+            <tr><td><code>/rank</code></td><td>5 секунд</td></tr>
             <tr><td><code>/help</code></td><td>5 секунд</td></tr>
             <tr><td><code>/unic</code></td><td>5 секунд</td></tr>
             <tr><td><code>/rolereact</code></td><td>3 секунды</td></tr>
@@ -1373,58 +1488,74 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
 </div>
 
 <script>
-  function toggle(header) {
-    const card = header.closest('.cmd-card');
-    card.classList.toggle('open');
+  function setCommandOpen(card, open) {
+    card.classList.toggle('open', open);
+    card.querySelector('.cmd-header').setAttribute('aria-expanded', String(open));
   }
 
-  // Highlight active nav — based on which linked section is closest to top
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  function toggle(header) {
+    const card = header.closest('.cmd-card');
+    setCommandOpen(card, !card.classList.contains('open'));
+  }
 
-  function getLinkedSections() {
-    return Array.from(navLinks).map(link => {
-      const id = link.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      return { link, el };
-    }).filter(x => x.el);
+  const linked = Array.from(document.querySelectorAll('.nav-link[href^="#"]'), link => ({
+    link,
+    el: document.getElementById(link.hash.slice(1)),
+  })).filter(item => item.el);
+
+  function activateLink(active) {
+    for (const { link } of linked) {
+      link.classList.toggle('active', link === active);
+      if (link === active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  }
+
+  function reveal(item) {
+    if (!item) return;
+    if (item.el.matches('.cmd-card')) setCommandOpen(item.el, true);
+    activateLink(item.link);
   }
 
   function updateActive() {
-    const linked = getLinkedSections();
-    const scrollY = window.scrollY;
-    const offset = 80;
-
-    // If scrolled to very bottom — always highlight last nav item
-    const atBottom = (window.innerHeight + scrollY) >= document.body.scrollHeight - 4;
-    if (atBottom && linked.length) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      linked[linked.length - 1].link.classList.add('active');
+    if (!linked.length) return;
+    const offset = parseFloat(getComputedStyle(linked[0].el).scrollMarginTop) || 0;
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (atBottom) {
+      const selected = linked.find(({ link, el }) => {
+        const bounds = el.getBoundingClientRect();
+        return link.hash === location.hash && bounds.bottom > offset && bounds.top < window.innerHeight;
+      });
+      activateLink((selected ?? linked.at(-1)).link);
       return;
     }
 
-    let best = null;
-    let bestDist = Infinity;
-
+    let best = linked[0].link;
+    let bestTop = -Infinity;
     for (const { link, el } of linked) {
-      const top = el.getBoundingClientRect().top + scrollY;
-      if (top <= scrollY + offset) {
-        const dist = scrollY + offset - top;
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = link;
-        }
+      const top = el.getBoundingClientRect().top;
+      if (top <= offset + 2 && top >= bestTop) {
+        bestTop = top;
+        best = link;
       }
     }
-
-    if (!best && linked.length) best = linked[0].link;
-
-    navLinks.forEach(l => l.classList.remove('active'));
-    if (best) best.classList.add('active');
+    activateLink(best);
   }
 
+  for (const item of linked) {
+    item.link.addEventListener('click', event => {
+      if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) reveal(item);
+    });
+  }
+  function revealFragment() {
+    const item = linked.find(({ link }) => link.hash === location.hash);
+    if (item) reveal(item);
+    else updateActive();
+  }
+  window.addEventListener('hashchange', revealFragment);
   window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
+  revealFragment();
 </script>
-<footer class="public-site-footer"><span>Elancag · сведения по исходному коду</span><a href="./index.html">На главную</a><a href="./docs.html">Руководство</a><a href="./roadmap.html">Дорожная карта</a></footer>
+
 </body>
 </html>

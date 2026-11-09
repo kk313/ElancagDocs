@@ -202,13 +202,6 @@ body::after {
   box-shadow: 0 0 0 6px rgba(88,101,242,.12), 0 8px 32px rgba(88,101,242,.45);
 }
 
-.btn-primary.disabled {
-  opacity: .38;
-  cursor: not-allowed;
-  pointer-events: none;
-  box-shadow: none;
-}
-
 /* Secondary — docs */
 .btn-secondary {
   background: var(--panel);
@@ -227,45 +220,6 @@ body::after {
 .btn-icon {
   font-size: 18px;
   line-height: 1;
-}
-
-/* Tooltip on disabled */
-.btn-wrap {
-  position: relative;
-}
-
-.tooltip {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  background: var(--panel);
-  border: 1px solid var(--rim);
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 11px;
-  padding: 6px 12px;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .2s, transform .2s;
-  z-index: 10;
-}
-
-.tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--rim);
-}
-
-.btn-wrap:hover .tooltip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
 
 /* ── Features strip ────────────────────────────────── */
@@ -300,17 +254,6 @@ body::after {
 
 .feat .fi { font-size: 15px; }
 
-/* ── Footer ────────────────────────────────────────── */
-.foot {
-  margin-top: 80px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  text-align: center;
-  letter-spacing: .06em;
-  opacity: 0;
-  animation: rise .6s .8s ease forwards;
-}
 
 /* ── Animations ────────────────────────────────────── */
 @keyframes rise {
@@ -318,54 +261,10 @@ body::after {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Discord server corner btn ─────────────────────── */
-.discord-corner {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 10;
-  opacity: 0;
-  animation: rise .5s .9s ease forwards;
-}
-
-.discord-corner a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: var(--panel);
-  border: 1px solid var(--rim);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: background .18s, border-color .18s, transform .18s, box-shadow .18s;
-  box-shadow: 0 2px 12px rgba(0,0,0,.3);
-}
-
-.discord-corner a:hover {
-  background: var(--blurple);
-  border-color: var(--blurple);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(88,101,242,.45);
-}
-
-.discord-corner svg {
-  width: 22px;
-  height: 22px;
-  fill: var(--muted);
-  transition: fill .18s;
-}
-
-.discord-corner a:hover svg {
-  fill: #fff;
-}
-
-/* ── Responsive ────────────────────────────────────── */
 @media (max-width: 480px) {
   .cta { flex-direction: column; align-items: center; }
   .btn { width: 100%; justify-content: center; }
   .features { gap: 8px; }
-  .discord-corner { top: 14px; right: 14px; }
 }
 </style>
 <!-- public-assets:start -->
@@ -382,8 +281,6 @@ body::after {
 .public-design button{font:500 11px 'Segoe UI',sans-serif;padding:6px 10px;border:1px solid transparent;border-radius:6px;background:transparent;color:#9daabb;cursor:pointer}
 .public-design button[aria-pressed=true]{background:#273449;color:#fff;border-color:#41516a}
 .public-topbar :focus-visible{outline:2px solid #8ea1ff;outline-offset:3px}
-.public-site-footer{position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:24px;border-top:1px solid var(--border,var(--rim));font:11px 'Segoe UI',sans-serif;color:var(--muted)}
-.public-site-footer a{color:var(--text);text-decoration:none}
 .page-home .wrap{min-height:calc(100dvh - 68px)}
 .page-docs .sidebar{top:68px;height:calc(100dvh - 68px)}
 .page-roadmap .wrap{padding-top:52px}
@@ -412,8 +309,6 @@ html[data-site-design=studio] .btn-primary{background:#356748;border-color:#3567
 html[data-site-design=studio] .btn-icon,html[data-site-design=studio] .fi{display:none}
 html[data-site-design=studio] .features{grid-column:1/-1;max-width:none;justify-content:flex-start;gap:8px;margin-top:30px;animation:none;opacity:1}
 html[data-site-design=studio] .feat{border-radius:6px;background:#eaf0e2;color:#81946f;border-color:#dfe8d6;font-family:var(--sans);font-size:10px;padding:7px 11px}
-html[data-site-design=studio] .foot{color:#a0ad94;font-family:var(--sans);font-size:10px;letter-spacing:1px}
-html[data-site-design=studio] .page-home .foot{grid-column:1/-1;text-align:left;align-self:end;padding-top:36px}
 html[data-site-design=studio] .public-showcase{display:block;grid-column:2;grid-row:1/5;align-self:center;padding:26px;background:#e8eee0;border:1px solid #d8e3cc;border-radius:24px;transform:rotate(2deg);box-shadow:0 20px 60px #4c693312}
 .public-showcase-title{font-size:9px;letter-spacing:2px;color:#8a9b79;margin-bottom:22px}.public-showcase h2{font-size:26px;line-height:1.25;font-weight:600;letter-spacing:-.8px;color:#47633b;margin-bottom:26px}.public-showcase-row{padding:17px;background:#f9fbf5;border:1px solid #dce6d2;border-radius:12px;margin-top:10px;display:flex;gap:15px;align-items:center}.public-showcase-row>span{color:#a9b79a;font:10px var(--mono)}.public-showcase-row strong{font-size:13px;font-weight:600;color:#526f45}.public-showcase-row small{display:block;font-size:10px;color:#97a889;margin-top:4px}
 html[data-site-design=studio] .page-docs .sidebar{background:#eaf0e3;border-color:#dce6d2;width:248px;padding-top:28px}
@@ -422,7 +317,7 @@ html[data-site-design=studio] .sidebar-logo .name{color:#34543b}
 html[data-site-design=studio] .nav-group-label{font-size:9px;letter-spacing:1.6px;color:#9bab8b}
 html[data-site-design=studio] .nav-link{color:#7f936f;font-size:12px;border-radius:8px;margin:3px 10px;padding:9px 12px}
 html[data-site-design=studio] .nav-link.active{background:#fff;color:#3e653e;box-shadow:0 2px 5px #2d492508}
-html[data-site-design=studio] .nav-link .emoji,html[data-site-design=studio] .section-emoji,html[data-site-design=studio] .cmd-icon,html[data-site-design=studio] .note-icon{display:none}
+html[data-site-design=studio] .section-emoji,html[data-site-design=studio] .note-icon{display:none}
 html[data-site-design=studio] .page-docs .hero{background:transparent;padding:50px 48px 36px;border-color:#e2e9da}
 html[data-site-design=studio] .page-docs .hero::before{display:none}
 html[data-site-design=studio] .hero-tag{background:#edf3e5;border-color:#dbe7d0;color:#819870;font-family:var(--sans);font-size:10px}
@@ -455,9 +350,8 @@ html[data-site-design=studio] .card-title{color:#547447;font-size:14px;font-weig
 html[data-site-design=studio] .card-desc{color:#8b9e7a;font-size:12px}
 html[data-site-design=studio] .card-status{background:#eef4e7;border-color:#d5e4c9;color:#7e966b;font-size:8px}
 html[data-site-design=studio] .public-brief{text-align:left;color:#8a9d7b}
-html[data-site-design=studio] .public-site-footer{background:#eef3e7;color:#9aaa8b}
 @media(max-width:900px){.public-topbar{padding:12px 18px;gap:14px}.public-links{gap:12px}html[data-site-design=studio] .page-home .wrap{column-gap:28px;padding:48px 28px}html[data-site-design=studio] .page-docs .sidebar{width:210px}html[data-site-design=studio] .page-docs .hero{padding:36px 28px}html[data-site-design=studio] .page-docs .content{padding:28px}}
-@media(max-width:680px){.public-topbar{flex-wrap:wrap;gap:12px;min-height:100px;padding:12px 16px}.public-brand{font-size:14px}.public-links{order:3;width:100%;justify-content:space-between;gap:8px}.public-links a{font-size:11px}.public-design button{padding:6px 8px}.page-docs .sidebar{top:100px;height:calc(100dvh - 100px)}.page-docs section,.page-docs .cmd-card{scroll-margin-top:124px}html[data-site-design=studio] .page-home .wrap{display:flex;align-items:flex-start;gap:0;padding:40px 24px;min-height:0}html[data-site-design=studio] .hero-name{font-size:68px;letter-spacing:-4px}html[data-site-design=studio] .subtitle{font-size:16px}html[data-site-design=studio] .public-showcase{width:100%;max-width:420px;transform:none;margin:14px 0 20px;padding:22px}.public-showcase h2{font-size:22px}html[data-site-design=studio] .features{margin-top:20px}html[data-site-design=studio] .page-docs .hero h1{font-size:30px}html[data-site-design=studio] .page-docs .hero{padding:32px 20px}html[data-site-design=studio] .page-docs .content{padding:24px 18px}html[data-site-design=studio] .page-roadmap .wrap{padding:36px 18px}html[data-site-design=studio] .page-roadmap .hero h1{font-size:42px}html[data-site-design=studio] .cmd-body{padding:18px}.public-site-footer{font-size:10px;gap:12px}}
+@media(max-width:680px){.public-topbar{flex-wrap:wrap;gap:12px;min-height:100px;padding:12px 16px}.public-brand{font-size:14px}.public-links{order:3;width:100%;justify-content:space-between;gap:8px}.public-links a{font-size:11px}.public-design button{padding:6px 8px}.page-docs .sidebar{top:100px;height:calc(100dvh - 100px)}.page-docs section,.page-docs .cmd-card{scroll-margin-top:124px}html[data-site-design=studio] .page-home .wrap{display:flex;align-items:flex-start;gap:0;padding:40px 24px;min-height:0}html[data-site-design=studio] .hero-name{font-size:68px;letter-spacing:-4px}html[data-site-design=studio] .subtitle{font-size:16px}html[data-site-design=studio] .public-showcase{width:100%;max-width:420px;transform:none;margin:14px 0 20px;padding:22px}.public-showcase h2{font-size:22px}html[data-site-design=studio] .features{margin-top:20px}html[data-site-design=studio] .page-docs .hero h1{font-size:30px}html[data-site-design=studio] .page-docs .hero{padding:32px 20px}html[data-site-design=studio] .page-docs .content{padding:24px 18px}html[data-site-design=studio] .page-roadmap .wrap{padding:36px 18px}html[data-site-design=studio] .page-roadmap .hero h1{font-size:42px}html[data-site-design=studio] .cmd-body{padding:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.tag,.cta,.features,.subtitle,.letter{opacity:1!important;transform:none!important}#cvs{display:none}}
 html[data-site-design=studio] .page-docs :is(p,td,.flow-text,.region-item){color:#647b56}
 html[data-site-design=studio] .page-docs :is(.note,.note.info,.note.tip){color:#536e45}
@@ -470,11 +364,29 @@ html[data-site-design=studio] .page-roadmap .hero::before{display:none}
 html[data-site-design=studio] .page-roadmap .hero-sub{margin:0;color:#728a61}
 html[data-site-design=studio] .page-roadmap .hero-sub em{color:#5a7b48}
 html[data-site-design=studio] .page-roadmap .board{padding:0 0 48px;max-width:none}
-#web-panel ul{padding-left:22px;margin:12px 0 20px}
-#web-panel li{padding:5px 0}
 html[data-site-design=studio] .hero-name{animation:none;opacity:1;padding:0}
-html[data-site-design=studio] .foot{animation:none;opacity:1}
-@media(prefers-reduced-motion:reduce){.hero-name,.hero h1,.hero-tag,.hero-sub,.board,.foot{opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.hero-name,.hero h1,.hero-tag,.hero-sub,.board{opacity:1!important;transform:none!important}}
+
+/* Keep flex content shrinkable beside the documentation navigation. */
+.page-docs .main{min-width:0}
+
+.public-invite{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:8px;background:#444fd2;color:#fff;font-weight:650;font-size:12px;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.public-invite:hover{background:#3944bd}
+html[data-site-design=studio] .public-invite{background:#356748}
+html[data-site-design=studio] .public-invite:hover{background:#285339}
+@media(max-width:960px){
+  .public-topbar{flex-wrap:wrap;gap:8px 12px;min-height:112px;padding:12px 16px}
+  .public-links{order:3;width:100%;justify-content:space-between}
+  .page-docs .sidebar{top:112px;height:calc(100dvh - 112px)}
+  .page-docs section,.page-docs .cmd-card{scroll-margin-top:136px}
+}
+@media(max-width:440px){
+  .public-topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:152px}
+  .public-invite{grid-column:2;grid-row:1}
+  .public-design{grid-column:1/-1;justify-self:start}
+  .public-links{grid-column:1/-1}
+  .page-docs section,.page-docs .cmd-card{scroll-margin-top:176px}
+}
 </style>
 <script data-public-script>
 (() => {
@@ -497,7 +409,6 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
       header.setAttribute('aria-controls',body.id);
       header.setAttribute('aria-expanded',String(header.closest('.cmd-card').classList.contains('open')));
       header.addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();header.click();}});
-      header.addEventListener('click',()=>queueMicrotask(()=>header.setAttribute('aria-expanded',String(header.closest('.cmd-card').classList.contains('open')))));
     });
   });
   document.addEventListener('click',event=>{
@@ -513,7 +424,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
 <!-- public-assets:end -->
 </head>
 <body class="page-home">
-<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" aria-current="page">Главная</a><a href="./docs.html">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div></header>
+<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" aria-current="page">Главная</a><a href="./docs.html">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div><a class="public-invite" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить бота</a></header>
 
 <canvas id="cvs"></canvas>
 
@@ -526,16 +437,10 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
 
   <h1 class="hero-name" id="heroName">Elancag</h1>
 
-  <p class="subtitle" id="heroSubtitle">Команды, автоматизация и порядок<br>на вашем Discord-сервере.</p>
+  <p class="subtitle" id="heroSubtitle">Команды, автоматизация и рейтинг<br>на вашем Discord-сервере.</p>
 
   <div class="cta">
-    <div class="btn-wrap">
-      <div class="tooltip">Публичная ссылка приглашения пока не указана</div>
-      <a class="btn btn-primary disabled" aria-disabled="true">
-        <span class="btn-icon">＋</span>
-        Добавить на сервер
-      </a>
-    </div>
+    <a class="btn btn-primary" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить на сервер</a>
 
     <a class="btn btn-secondary" href="./docs.html">
       <span class="btn-icon">📖</span>
@@ -548,22 +453,16 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
     </a>
   </div>
 
-  <aside class="public-showcase" aria-label="Возможности Elancag"><div class="public-showcase-title">ОДНО РАБОЧЕЕ ПРОСТРАНСТВО</div><h2>Каждая настройка<br>на своём месте.</h2><div class="public-showcase-row"><span>01</span><div><strong>Команды и правила</strong><small>Роли, участники, каналы и задержки</small></div></div><div class="public-showcase-row"><span>02</span><div><strong>Автоматизация</strong><small>Игровые и невидимые статусы в голосовых</small></div></div><div class="public-showcase-row"><span>03</span><div><strong>Панель Studio</strong><small>Поиск серверов и подробный редактор</small></div></div></aside>
+  <aside class="public-showcase" aria-label="Возможности Elancag"><div class="public-showcase-title">ВОЗМОЖНОСТИ ELANCAG</div><h2>Полезные инструменты<br>для вашего сервера.</h2><div class="public-showcase-row"><span>01</span><div><strong>Команды и правила</strong><small>Роли, участники, каналы и задержки</small></div></div><div class="public-showcase-row"><span>02</span><div><strong>Автоматизация</strong><small>Игровые и невидимые статусы в голосовых</small></div></div><div class="public-showcase-row"><span>03</span><div><strong>Рейтинг участников</strong><small>Опыт, уровни, сообщения и время в голосе</small></div></div></aside>
   <div class="features">
     <div class="feat"><span class="fi">🌍</span> Смена регионов</div>
     <div class="feat"><span class="fi">⚡</span> Slash-команды</div>
     <div class="feat"><span class="fi">🛡️</span> Гибкие права</div>
-    <div class="feat"><span class="fi">🔌</span> Рубильник фич</div>
     <div class="feat"><span class="fi">⭐</span> Роли за реакции</div>
-    <div class="feat"><span class="fi">📊</span> Инфо-панель</div>
-    <div class="feat"><span class="fi">🔐</span> Discord OAuth2</div>
-    <div class="feat"><span class="fi">◈</span> Studio и классический дизайн</div>
-    <div class="feat"><span class="fi">⌕</span> Поиск серверов</div>
+    <div class="feat"><span class="fi">◈</span> Рейтинг участников</div>
+    <div class="feat">Настройки через /settings</div>
   </div>
 
-  <div class="foot">
-    ELANCAG &nbsp;·&nbsp; made with ♥ for Discord
-  </div>
 
 </div>
 
@@ -579,7 +478,7 @@ function pickName() {
 }
 
 /* ── Subtitle variants ─────────────────────────── */
-const SUBTITLES = [{ html: 'Команды, автоматизация и порядок<br>на вашем Discord-сервере.', weight: 1 }];
+const SUBTITLES = [{ html: 'Команды, автоматизация и рейтинг<br>на вашем Discord-сервере.', weight: 1 }];
 
 function pickSubtitle() {
   const total = SUBTITLES.reduce((s, n) => s + n.weight, 0);
@@ -686,6 +585,6 @@ document.addEventListener('mousemove', e => {
     = `translate(${xf*.3}px, ${yf*.3}px)`;
 });
 </script>
-<footer class="public-site-footer"><span>Elancag · сведения по исходному коду</span><a href="./index.html">На главную</a><a href="./docs.html">Руководство</a><a href="./roadmap.html">Дорожная карта</a></footer>
+
 </body>
 </html>

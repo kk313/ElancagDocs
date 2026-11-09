@@ -221,11 +221,6 @@ body::after {
 .tp-red    { color: #ff8e90; border-color: rgba(237,66,69,.45);  background: rgba(237,66,69,.09); }
 .tp-teal   { color: #5fffd4; border-color: rgba(87,242,200,.45); background: rgba(87,242,200,.09); }
 
-.foot {
-  text-align: center; font-family: var(--mono); font-size: 11px;
-  color: var(--muted); padding-bottom: 48px;
-  letter-spacing: .06em; position: relative; z-index: 2;
-}
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(16px); }
@@ -247,8 +242,6 @@ body::after {
 .public-design button{font:500 11px 'Segoe UI',sans-serif;padding:6px 10px;border:1px solid transparent;border-radius:6px;background:transparent;color:#9daabb;cursor:pointer}
 .public-design button[aria-pressed=true]{background:#273449;color:#fff;border-color:#41516a}
 .public-topbar :focus-visible{outline:2px solid #8ea1ff;outline-offset:3px}
-.public-site-footer{position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:24px;border-top:1px solid var(--border,var(--rim));font:11px 'Segoe UI',sans-serif;color:var(--muted)}
-.public-site-footer a{color:var(--text);text-decoration:none}
 .page-home .wrap{min-height:calc(100dvh - 68px)}
 .page-docs .sidebar{top:68px;height:calc(100dvh - 68px)}
 .page-roadmap .wrap{padding-top:52px}
@@ -277,8 +270,6 @@ html[data-site-design=studio] .btn-primary{background:#356748;border-color:#3567
 html[data-site-design=studio] .btn-icon,html[data-site-design=studio] .fi{display:none}
 html[data-site-design=studio] .features{grid-column:1/-1;max-width:none;justify-content:flex-start;gap:8px;margin-top:30px;animation:none;opacity:1}
 html[data-site-design=studio] .feat{border-radius:6px;background:#eaf0e2;color:#81946f;border-color:#dfe8d6;font-family:var(--sans);font-size:10px;padding:7px 11px}
-html[data-site-design=studio] .foot{color:#a0ad94;font-family:var(--sans);font-size:10px;letter-spacing:1px}
-html[data-site-design=studio] .page-home .foot{grid-column:1/-1;text-align:left;align-self:end;padding-top:36px}
 html[data-site-design=studio] .public-showcase{display:block;grid-column:2;grid-row:1/5;align-self:center;padding:26px;background:#e8eee0;border:1px solid #d8e3cc;border-radius:24px;transform:rotate(2deg);box-shadow:0 20px 60px #4c693312}
 .public-showcase-title{font-size:9px;letter-spacing:2px;color:#8a9b79;margin-bottom:22px}.public-showcase h2{font-size:26px;line-height:1.25;font-weight:600;letter-spacing:-.8px;color:#47633b;margin-bottom:26px}.public-showcase-row{padding:17px;background:#f9fbf5;border:1px solid #dce6d2;border-radius:12px;margin-top:10px;display:flex;gap:15px;align-items:center}.public-showcase-row>span{color:#a9b79a;font:10px var(--mono)}.public-showcase-row strong{font-size:13px;font-weight:600;color:#526f45}.public-showcase-row small{display:block;font-size:10px;color:#97a889;margin-top:4px}
 html[data-site-design=studio] .page-docs .sidebar{background:#eaf0e3;border-color:#dce6d2;width:248px;padding-top:28px}
@@ -287,7 +278,7 @@ html[data-site-design=studio] .sidebar-logo .name{color:#34543b}
 html[data-site-design=studio] .nav-group-label{font-size:9px;letter-spacing:1.6px;color:#9bab8b}
 html[data-site-design=studio] .nav-link{color:#7f936f;font-size:12px;border-radius:8px;margin:3px 10px;padding:9px 12px}
 html[data-site-design=studio] .nav-link.active{background:#fff;color:#3e653e;box-shadow:0 2px 5px #2d492508}
-html[data-site-design=studio] .nav-link .emoji,html[data-site-design=studio] .section-emoji,html[data-site-design=studio] .cmd-icon,html[data-site-design=studio] .note-icon{display:none}
+html[data-site-design=studio] .section-emoji,html[data-site-design=studio] .note-icon{display:none}
 html[data-site-design=studio] .page-docs .hero{background:transparent;padding:50px 48px 36px;border-color:#e2e9da}
 html[data-site-design=studio] .page-docs .hero::before{display:none}
 html[data-site-design=studio] .hero-tag{background:#edf3e5;border-color:#dbe7d0;color:#819870;font-family:var(--sans);font-size:10px}
@@ -320,9 +311,8 @@ html[data-site-design=studio] .card-title{color:#547447;font-size:14px;font-weig
 html[data-site-design=studio] .card-desc{color:#8b9e7a;font-size:12px}
 html[data-site-design=studio] .card-status{background:#eef4e7;border-color:#d5e4c9;color:#7e966b;font-size:8px}
 html[data-site-design=studio] .public-brief{text-align:left;color:#8a9d7b}
-html[data-site-design=studio] .public-site-footer{background:#eef3e7;color:#9aaa8b}
 @media(max-width:900px){.public-topbar{padding:12px 18px;gap:14px}.public-links{gap:12px}html[data-site-design=studio] .page-home .wrap{column-gap:28px;padding:48px 28px}html[data-site-design=studio] .page-docs .sidebar{width:210px}html[data-site-design=studio] .page-docs .hero{padding:36px 28px}html[data-site-design=studio] .page-docs .content{padding:28px}}
-@media(max-width:680px){.public-topbar{flex-wrap:wrap;gap:12px;min-height:100px;padding:12px 16px}.public-brand{font-size:14px}.public-links{order:3;width:100%;justify-content:space-between;gap:8px}.public-links a{font-size:11px}.public-design button{padding:6px 8px}.page-docs .sidebar{top:100px;height:calc(100dvh - 100px)}.page-docs section,.page-docs .cmd-card{scroll-margin-top:124px}html[data-site-design=studio] .page-home .wrap{display:flex;align-items:flex-start;gap:0;padding:40px 24px;min-height:0}html[data-site-design=studio] .hero-name{font-size:68px;letter-spacing:-4px}html[data-site-design=studio] .subtitle{font-size:16px}html[data-site-design=studio] .public-showcase{width:100%;max-width:420px;transform:none;margin:14px 0 20px;padding:22px}.public-showcase h2{font-size:22px}html[data-site-design=studio] .features{margin-top:20px}html[data-site-design=studio] .page-docs .hero h1{font-size:30px}html[data-site-design=studio] .page-docs .hero{padding:32px 20px}html[data-site-design=studio] .page-docs .content{padding:24px 18px}html[data-site-design=studio] .page-roadmap .wrap{padding:36px 18px}html[data-site-design=studio] .page-roadmap .hero h1{font-size:42px}html[data-site-design=studio] .cmd-body{padding:18px}.public-site-footer{font-size:10px;gap:12px}}
+@media(max-width:680px){.public-topbar{flex-wrap:wrap;gap:12px;min-height:100px;padding:12px 16px}.public-brand{font-size:14px}.public-links{order:3;width:100%;justify-content:space-between;gap:8px}.public-links a{font-size:11px}.public-design button{padding:6px 8px}.page-docs .sidebar{top:100px;height:calc(100dvh - 100px)}.page-docs section,.page-docs .cmd-card{scroll-margin-top:124px}html[data-site-design=studio] .page-home .wrap{display:flex;align-items:flex-start;gap:0;padding:40px 24px;min-height:0}html[data-site-design=studio] .hero-name{font-size:68px;letter-spacing:-4px}html[data-site-design=studio] .subtitle{font-size:16px}html[data-site-design=studio] .public-showcase{width:100%;max-width:420px;transform:none;margin:14px 0 20px;padding:22px}.public-showcase h2{font-size:22px}html[data-site-design=studio] .features{margin-top:20px}html[data-site-design=studio] .page-docs .hero h1{font-size:30px}html[data-site-design=studio] .page-docs .hero{padding:32px 20px}html[data-site-design=studio] .page-docs .content{padding:24px 18px}html[data-site-design=studio] .page-roadmap .wrap{padding:36px 18px}html[data-site-design=studio] .page-roadmap .hero h1{font-size:42px}html[data-site-design=studio] .cmd-body{padding:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.tag,.cta,.features,.subtitle,.letter{opacity:1!important;transform:none!important}#cvs{display:none}}
 html[data-site-design=studio] .page-docs :is(p,td,.flow-text,.region-item){color:#647b56}
 html[data-site-design=studio] .page-docs :is(.note,.note.info,.note.tip){color:#536e45}
@@ -335,11 +325,29 @@ html[data-site-design=studio] .page-roadmap .hero::before{display:none}
 html[data-site-design=studio] .page-roadmap .hero-sub{margin:0;color:#728a61}
 html[data-site-design=studio] .page-roadmap .hero-sub em{color:#5a7b48}
 html[data-site-design=studio] .page-roadmap .board{padding:0 0 48px;max-width:none}
-#web-panel ul{padding-left:22px;margin:12px 0 20px}
-#web-panel li{padding:5px 0}
 html[data-site-design=studio] .hero-name{animation:none;opacity:1;padding:0}
-html[data-site-design=studio] .foot{animation:none;opacity:1}
-@media(prefers-reduced-motion:reduce){.hero-name,.hero h1,.hero-tag,.hero-sub,.board,.foot{opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.hero-name,.hero h1,.hero-tag,.hero-sub,.board{opacity:1!important;transform:none!important}}
+
+/* Keep flex content shrinkable beside the documentation navigation. */
+.page-docs .main{min-width:0}
+
+.public-invite{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:8px;background:#444fd2;color:#fff;font-weight:650;font-size:12px;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.public-invite:hover{background:#3944bd}
+html[data-site-design=studio] .public-invite{background:#356748}
+html[data-site-design=studio] .public-invite:hover{background:#285339}
+@media(max-width:960px){
+  .public-topbar{flex-wrap:wrap;gap:8px 12px;min-height:112px;padding:12px 16px}
+  .public-links{order:3;width:100%;justify-content:space-between}
+  .page-docs .sidebar{top:112px;height:calc(100dvh - 112px)}
+  .page-docs section,.page-docs .cmd-card{scroll-margin-top:136px}
+}
+@media(max-width:440px){
+  .public-topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:152px}
+  .public-invite{grid-column:2;grid-row:1}
+  .public-design{grid-column:1/-1;justify-self:start}
+  .public-links{grid-column:1/-1}
+  .page-docs section,.page-docs .cmd-card{scroll-margin-top:176px}
+}
 </style>
 <script data-public-script>
 (() => {
@@ -362,7 +370,6 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
       header.setAttribute('aria-controls',body.id);
       header.setAttribute('aria-expanded',String(header.closest('.cmd-card').classList.contains('open')));
       header.addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();header.click();}});
-      header.addEventListener('click',()=>queueMicrotask(()=>header.setAttribute('aria-expanded',String(header.closest('.cmd-card').classList.contains('open')))));
     });
   });
   document.addEventListener('click',event=>{
@@ -378,7 +385,7 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
 <!-- public-assets:end -->
 </head>
 <body class="page-roadmap">
-<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html">Документация</a><a href="./roadmap.html" aria-current="page">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div></header>
+<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html">Документация</a><a href="./roadmap.html" aria-current="page">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div><a class="public-invite" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить бота</a></header>
 
 <canvas id="cvs"></canvas>
 
@@ -397,11 +404,11 @@ html[data-site-design=studio] .foot{animation:none;opacity:1}
     </p>
   </div>
 
-<p class="public-brief">Доступные возможности сверены с текущими исходниками. Планы и идеи сохранены из прежней дорожной карты; сроки их реализации не объявлены.</p><div class="board"><section class="col col--now"><div class="col-header"><div class="col-dot"></div><span class="col-title">Уже доступно</span><span class="col-count">3</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Веб-панель Studio</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Два оформления, отдельный редактор команд и автоматизации, поиск серверов и общее сохранение настроек.</p><div class="card-tags"><span class="tag-pill tp-muted">Панель</span><span class="tag-pill tp-muted">Studio</span></div></article><article class="card"><div class="card-top"><span class="card-title">Логирование событий</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Шесть категорий: участники, профили, роли, сообщения, голос и модерация. Отдельные ветки и проверка их состояния.</p><div class="card-tags"><span class="tag-pill tp-muted">Логи</span><span class="tag-pill tp-muted">Discord</span></div></article><article class="card"><div class="card-top"><span class="card-title">Голосовая автоматизация</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Игровой статус и статус при наличии участников в невидимом режиме. Конфигурация и права задаются для каждого сервера.</p><div class="card-tags"><span class="tag-pill tp-muted">Голос</span><span class="tag-pill tp-muted">Настройки</span></div></article></div></section><section class="col col--plan"><div class="col-header"><div class="col-dot"></div><span class="col-title">Направления развития</span><span class="col-count">2</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Временные голосовые каналы</span><span class="card-status cs-queued">План</span></div><p class="card-desc">Автоматическое создание и удаление личных голосовых каналов. Идея из прежней дорожной карты; в текущей сборке не подключена.</p><div class="card-tags"><span class="tag-pill tp-muted">Голос</span></div></article><article class="card"><div class="card-top"><span class="card-title">Инструменты модерации</span><span class="card-status cs-queued">План</span></div><p class="card-desc">Предупреждения и управление участниками через команды. Направление из прежней дорожной карты, без заявленного срока.</p><div class="card-tags"><span class="tag-pill tp-muted">Модерация</span></div></article></div></section><section class="col col--far"><div class="col-header"><div class="col-dot"></div><span class="col-title">Идеи на будущее</span><span class="col-count">2</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Система рейтинга</span><span class="card-status cs-idea">Идея</span></div><p class="card-desc">Опыт, уровни и таблица лидеров. В текущей сборке система рейтинга недоступна; готовность реализации не заявляется.</p><div class="card-tags"><span class="tag-pill tp-muted">XP</span><span class="tag-pill tp-muted">Активность</span></div></article><article class="card"><div class="card-top"><span class="card-title">Музыкальная интеграция</span><span class="card-status cs-idea">Идея</span></div><p class="card-desc">Воспроизведение музыки в голосовых каналах. Исследовательская идея, не доступная функция и не обещание интеграций с сервисами.</p><div class="card-tags"><span class="tag-pill tp-muted">Музыка</span></div></article></div></section></div><!-- /.board -->
+<p class="public-brief">Доступные возможности сверены с текущими исходниками. Планы и идеи сохранены из прежней дорожной карты; сроки их реализации не объявлены.</p><div class="board"><section class="col col--now"><div class="col-header"><div class="col-dot"></div><span class="col-title">Уже доступно</span><span class="col-count">4</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Логирование событий</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Шесть категорий: участники, профили, роли, сообщения, голос и модерация. Отдельные ветки и проверка их состояния.</p><div class="card-tags"><span class="tag-pill tp-muted">Логи</span><span class="tag-pill tp-muted">Discord</span></div></article><article class="card"><div class="card-top"><span class="card-title">Голосовая автоматизация</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Игровой статус и статус при наличии участников в невидимом режиме. Конфигурация и права задаются для каждого сервера.</p><div class="card-tags"><span class="tag-pill tp-muted">Голос</span><span class="tag-pill tp-muted">Настройки</span></div></article>
+<article class="card"><div class="card-top"><span class="card-title">Рейтинг участников</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Опыт за сообщения и голос, уровни, отдельные счётчики активности, PNG-профили и компактный топ-10.</p><div class="card-tags"><span class="tag-pill tp-muted">XP</span><span class="tag-pill tp-muted">Активность</span></div></article>
+<article class="card"><div class="card-top"><span class="card-title">Настройки в Discord</span><span class="card-status cs-live">Доступно</span></div><p class="card-desc">Личное меню /settings для команд, голосовых сценариев, рейтинга и логирования.</p><div class="card-tags"><span class="tag-pill tp-muted">Управление</span></div></article>
+</div></section><section class="col col--plan"><div class="col-header"><div class="col-dot"></div><span class="col-title">Направления развития</span><span class="col-count">2</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Временные голосовые каналы</span><span class="card-status cs-queued">План</span></div><p class="card-desc">Автоматическое создание и удаление личных голосовых каналов. Идея из прежней дорожной карты; в текущей сборке не подключена.</p><div class="card-tags"><span class="tag-pill tp-muted">Голос</span></div></article><article class="card"><div class="card-top"><span class="card-title">Инструменты модерации</span><span class="card-status cs-queued">План</span></div><p class="card-desc">Предупреждения и управление участниками через команды. Направление из прежней дорожной карты, без заявленного срока.</p><div class="card-tags"><span class="tag-pill tp-muted">Модерация</span></div></article></div></section><section class="col col--far"><div class="col-header"><div class="col-dot"></div><span class="col-title">Идеи на будущее</span><span class="col-count">1</span></div><div class="col-body"><article class="card"><div class="card-top"><span class="card-title">Музыкальная интеграция</span><span class="card-status cs-idea">Идея</span></div><p class="card-desc">Воспроизведение музыки в голосовых каналах. Исследовательская идея, не доступная функция и не обещание интеграций с сервисами.</p><div class="card-tags"><span class="tag-pill tp-muted">Музыка</span></div></article></div></section></div><!-- /.board -->
 
-  <div class="foot">
-    ELANCAG &nbsp;·&nbsp; Roadmap &nbsp;·&nbsp; made with ♥ for Discord
-  </div>
 
 </div><!-- /.wrap -->
 
@@ -460,6 +467,6 @@ matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',syncAni
 window.addEventListener('resize', resize);
 resize(); syncAnimation();
 </script>
-<footer class="public-site-footer"><span>Elancag · сведения по исходному коду</span><a href="./index.html">На главную</a><a href="./docs.html">Руководство</a><a href="./roadmap.html">Дорожная карта</a></footer>
+
 </body>
 </html>
