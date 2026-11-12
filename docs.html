@@ -2,6 +2,12 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<script data-public-design>
+try {
+  document.documentElement.dataset.siteDesign =
+    localStorage.getItem('elancag-public-design') === 'studio' ? 'studio' : 'classic';
+} catch {}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elancag — Руководство пользователя</title>
 <style>
@@ -697,9 +703,6 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
     document.querySelectorAll('[data-site-design-value]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.siteDesignValue===design)));
     document.dispatchEvent(new Event('site-design-change'));
   }
-  let saved;
-  try { saved=localStorage.getItem(key); } catch { /* Storage is optional. */ }
-  apply(saved);
   document.addEventListener('DOMContentLoaded',()=>{
     apply(document.documentElement.dataset.siteDesign);
     document.querySelectorAll('.cmd-header').forEach((header,index)=>{
