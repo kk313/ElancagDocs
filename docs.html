@@ -574,7 +574,7 @@ try {
   }
 </style>
 <!-- public-assets:start -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%235865f2%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-family%3D%22Segoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2248%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3Ee%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
 <style data-public-style>
 /* Shared navigation works with static hosting and a repository subdirectory. */
 .public-topbar{position:sticky;top:0;z-index:50;min-height:68px;display:flex;align-items:center;gap:24px;padding:12px 32px;background:#0e141df5;border-bottom:1px solid #293348;color:#dfe6ef;font-family:'Segoe UI',system-ui,sans-serif;backdrop-filter:blur(14px)}
@@ -593,6 +593,19 @@ try {
 .page-docs section,.page-docs .cmd-card{scroll-margin-top:92px}
 .public-brief{font-size:12px;color:var(--muted);line-height:1.9;max-width:760px;margin:0 auto 28px;text-align:center}
 .public-showcase{display:none}
+.public-showcase-scroll{max-height:185px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.public-showcase-scroll .public-showcase-row+.public-showcase-row{margin-top:10px}
+.page-docs .cmd-body{padding-top:20px}
+.page-docs .example+p{margin-top:14px}
+html[data-site-design=studio] .page-docs .usage-block{background:transparent}
+html[data-site-design=studio] .page-docs .flow-step{padding:12px 14px}
+html[data-site-design=studio] .page-docs .flow-step::after{left:28px;background:#adbf9f}
+html[data-site-design=studio] .page-docs .flow-num{border-color:#91a982;color:#375635;background:#f7fbf2}
+html[data-site-design=studio] .page-docs .flow-num.active{background:#dcebd3;border-color:#648359;color:#244a31}
+.page-roadmap .col-dot{border:1px solid currentColor;outline:1px solid currentColor;outline-offset:3px}
+.page-roadmap .col--now .col-dot{color:#50824d}
+.page-roadmap .col--plan .col-dot{color:#49769d}
+.page-roadmap .col--far .col-dot{color:#728268}
 .page-docs .table-scroll{overflow-x:auto;max-width:100%}
 html[data-site-design=studio]{color-scheme:light;--bg:#f5f7f0;--ink:#edf2e7;--panel:#fff;--panel2:#edf3e7;--surface:#fff;--surface2:#eef3e7;--border:#dbe5d3;--rim:#dbe5d3;--rim2:#bbcdb0;--blurple:#356748;--blurple2:#285339;--blurple-h:#285339;--glow:#426f4512;--accent:#5c824a;--green:#497b43;--yellow:#8b7024;--red:#b54c50;--orange:#986525;--text:#2e4b35;--sub:#7b8f70;--muted:#798d6d;--sans:'Segoe UI',system-ui,sans-serif;--mono:Consolas,monospace}
 html[data-site-design=studio] body{background:#f5f7f0;color:var(--text);font-family:var(--sans)}
@@ -705,6 +718,27 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
   }
   document.addEventListener('DOMContentLoaded',()=>{
     apply(document.documentElement.dataset.siteDesign);
+    const showcase=document.querySelector('.public-showcase-scroll');
+    if (showcase) {
+      const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+      let direction=1, lastTime=0, position=0, resumeAt=0;
+      const pause=()=>{resumeAt=performance.now()+2500;};
+      showcase.addEventListener('wheel',pause,{passive:true});
+      showcase.addEventListener('touchstart',pause,{passive:true});
+      function scroll(time) {
+        const elapsed=Math.min(40,time-(lastTime||time));
+        lastTime=time;
+        const end=showcase.scrollHeight-showcase.clientHeight;
+        if (end>0 && time>resumeAt && !document.hidden && !reducedMotion.matches &&
+            document.documentElement.dataset.siteDesign==='studio' && !showcase.matches(':hover,:focus-within')) {
+          position=Math.max(0,Math.min(end,position+direction*elapsed*.017));
+          showcase.scrollTop=position;
+          if (position===0 || position===end) {direction=position===0?1:-1;resumeAt=time+1000;}
+        } else position=showcase.scrollTop;
+        requestAnimationFrame(scroll);
+      }
+      requestAnimationFrame(scroll);
+    }
     document.querySelectorAll('.cmd-header').forEach((header,index)=>{
       const body=header.closest('.cmd-card').querySelector('.cmd-body');
       body.id=body.id||'command-details-'+index;
@@ -727,7 +761,7 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
 <!-- public-assets:end -->
 </head>
 <body class="page-docs">
-<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html" aria-current="page">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div><a class="public-invite" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить бота</a></header>
+<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%235865f2%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-family%3D%22Segoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2248%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3Ee%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" class="public-home">На главную</a><a href="./docs.html" aria-current="page">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div><a class="public-invite" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить бота</a></header>
 
 <div class="shell">
 
@@ -739,7 +773,7 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
       </a>
       <div>
         <div class="name">Elancag</div>
-        <div class="ver">Сборка <span data-build-version>v3.2.0-dev.0</span></div>
+        <div class="ver">Сборка <span data-build-version>v3.2.0</span></div>
       </div>
     </div>
 
@@ -755,7 +789,6 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
       <a class="nav-link" href="#cmd-help"><span class="emoji" aria-hidden="true">📖</span> /help</a>
       <a class="nav-link" href="#cmd-setregion"><span class="emoji" aria-hidden="true">🌍</span> /setregion</a>
       <a class="nav-link" href="#cmd-setstatus"><span class="emoji" aria-hidden="true">💬</span> /setstatus</a>
-      <a class="nav-link" href="#cmd-unic"><span class="emoji" aria-hidden="true">✨</span> /unic</a>
       <a class="nav-link" href="#cmd-rolereact"><span class="emoji" aria-hidden="true">⭐</span> /rolereact</a>
       <a class="nav-link" href="#cmd-rank"><span class="emoji" aria-hidden="true">🏆</span> /rank</a>
       <a class="nav-link" href="#cmd-settings"><span class="emoji" aria-hidden="true">⚙️</span> /settings</a>
@@ -764,7 +797,7 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
 
     <div class="nav-group">
       <div class="nav-group-label">Дополнительно</div>
-      <a class="nav-link" href="#automation"><span class="emoji" aria-hidden="true">🤖</span> Автоматизация</a>
+      <a class="nav-link" href="#systems"><span class="emoji" aria-hidden="true">🤖</span> Системы</a>
       <a class="nav-link" href="#access"><span class="emoji" aria-hidden="true">🔒</span> Права и доступ</a>
       <a class="nav-link" href="#cooldown"><span class="emoji" aria-hidden="true">⏳</span> Кулдауны</a>
       <a class="nav-link" href="#regions"><span class="emoji" aria-hidden="true">🌐</span> Список регионов</a>
@@ -775,7 +808,7 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
   <div class="main">
 
     <div class="hero">
-      <div class="hero-tag">📖 Руководство · <span data-build-version>v3.2.0-dev.0</span></div>
+      <div class="hero-tag">📖 Руководство · <span data-build-version>v3.2.0</span></div>
       <h1>Всё что нужно знать о <span>Elancag</span></h1>
       <p>Slash-команды, голосовые утилиты, роли за реакции, логирование, рейтинг и настройки сервера в Discord.</p>
     </div>
@@ -1079,77 +1112,6 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
           </div>
         </div>
 
-        <!-- /unic -->
-        <div class="cmd-card" id="cmd-unic">
-          <div class="cmd-header" onclick="toggle(this)">
-            <div class="cmd-icon" aria-hidden="true">✨</div>
-            <div class="cmd-meta">
-              <div class="cmd-name">/unic</div>
-              <div class="cmd-desc">Управление уникальными командами и особенностями сервера</div>
-              <div class="cmd-badges">
-                <span class="badge badge-admin">Только администраторы</span>
-                <span class="badge badge-cd">кд: 5 сек</span>
-                <span class="badge badge-ephem">виден только тебе</span>
-              </div>
-            </div>
-            <div class="cmd-toggle">⌄</div>
-          </div>
-          <div class="cmd-body">
-            <p>Позволяет администраторам просматривать и управлять уникальными командами и включаемыми особенностями (фичами) именно на вашем сервере.</p>
-
-            <div class="usage-block">
-              <div class="usage-label">Субкоманды</div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/unic list — список всех уникальных команд и фич</div>
-              </div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/unic info название — подробная информация о команде или фиче</div>
-              </div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/unic enable фича — включить особенность</div>
-              </div>
-              <div class="usage-row">
-                <span class="usage-type type-slash">SLASH</span>
-                <div class="usage-cmd">/unic disable фича — выключить особенность</div>
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-header"><div class="dot"></div> Просмотр списка</div>
-              <div class="example-body">
-                <div class="ex-msg"><span class="user">@admin</span> → <span class="cmd">/unic list</span></div>
-                <div class="ex-reply">
-                  <div class="ex-embed-title">✨ Уникальное — сервер</div>
-                  <div class="ex-embed-body">
-                    📋 Уникальные команды<br>
-                    > /rules — правила сервера<br><br>
-                    ✨ Особенности сервера<br>
-                    > ✅ Игровые статусы · `game_status`
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-header"><div class="dot"></div> Включение фичи</div>
-              <div class="example-body">
-                <div class="ex-msg"><span class="user">@admin</span> → <span class="cmd">/unic enable фича:game_status</span></div>
-                <div class="ex-reply green">
-                  <div class="ex-embed-title">✅ Игровые статусы включены</div>
-                  <div class="ex-embed-body">
-                    Отображает игровую активность участников в каналах.<br><br>
-                    > Фича активна и работает в реальном времени.<br>
-                    > Для отключения: /unic disable
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="cmd-card" id="cmd-rolereact">
           <div class="cmd-header" onclick="toggle(this)">
             <div class="cmd-icon" aria-hidden="true">⭐</div>
@@ -1391,7 +1353,11 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
 
       </section>
 
-<section id="automation"><h2><span class="section-emoji" aria-hidden="true">🤖</span> Автоматизация голосовых каналов</h2><div class="table-scroll"><table><thead><tr><th>Сценарий</th><th>Поведение</th></tr></thead><tbody><tr><td><code>game_status</code></td><td>Меняет статус голосового канала, если участник играет в одну из указанных игр.</td></tr><tr><td><code>invisible_status</code></td><td>Меняет статус, если участник в голосовом канале отображается офлайн. Это косвенный признак невидимого режима, а не отдельный статус, полученный от Discord.</td></tr></tbody></table></div><p>Особенности включаются отдельно для каждого сервера. Настройки применяются без перезапуска бота.</p><div class="note"><div class="note-icon">!</div><div>Каналы-статусники пока недоступны. Команда <code>/info</code> исключена из регистрации.</div></div></section>
+<section id="systems"><h2><span class="section-emoji" aria-hidden="true">🤖</span> Системы</h2>
+ <h3>Рейтинг участников</h3>
+ <p>Опыт начисляется за сообщения и голосовую активность. Роли за уровни и время в голосе заменяются по отдельным цепочкам. <a href="#cmd-rank">Команды рейтинга</a>.</p>
+ <h3>Мероприятия · закрытое тестирование</h3>
+ <p>Организатор создаёт объявление с карточкой, датой и местом. Участники записываются реакциями. Бот учитывает лимит мест и напоминает участникам о начале в ЛС. Система доступна на тестовом сервере.</p></section>
       <!-- ── ПРАВА И ДОСТУП ─────────────────────────────────── -->
       <section id="access">
         <h2><span class="section-emoji">🔒</span> Права и доступ</h2>
@@ -1409,7 +1375,7 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
           </div>
           <div class="flow-step">
             <div class="flow-num">3</div>
-            <div class="flow-text"><strong>Администратор Discord</strong> — право <code>Administrator</code> даёт доступ к <code>/unic</code>. Право <code>Manage Channels</code> — к <code>/setregion</code>, <code>/setstatus</code>.</div>
+            <div class="flow-text"><strong>Администратор Discord</strong> — Право <code>Manage Channels</code> — к <code>/setregion</code>, <code>/setstatus</code>.</div>
           </div>
           <div class="flow-step">
             <div class="flow-num">4</div>
@@ -1435,7 +1401,6 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
             <tr><td><code>/ping</code></td><td>5 секунд</td></tr>
             <tr><td><code>/rank</code></td><td>5 секунд</td></tr>
             <tr><td><code>/help</code></td><td>5 секунд</td></tr>
-            <tr><td><code>/unic</code></td><td>5 секунд</td></tr>
             <tr><td><code>/rolereact</code></td><td>3 секунды</td></tr>
             <tr><td><code>/setregion</code></td><td>10 секунд</td></tr>
             <tr><td><code>/setstatus</code></td><td>10 секунд</td></tr>

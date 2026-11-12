@@ -274,7 +274,7 @@ body::after {
 }
 </style>
 <!-- public-assets:start -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%235865f2%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-family%3D%22Segoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2248%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3Ee%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
 <style data-public-style>
 /* Shared navigation works with static hosting and a repository subdirectory. */
 .public-topbar{position:sticky;top:0;z-index:50;min-height:68px;display:flex;align-items:center;gap:24px;padding:12px 32px;background:#0e141df5;border-bottom:1px solid #293348;color:#dfe6ef;font-family:'Segoe UI',system-ui,sans-serif;backdrop-filter:blur(14px)}
@@ -293,6 +293,19 @@ body::after {
 .page-docs section,.page-docs .cmd-card{scroll-margin-top:92px}
 .public-brief{font-size:12px;color:var(--muted);line-height:1.9;max-width:760px;margin:0 auto 28px;text-align:center}
 .public-showcase{display:none}
+.public-showcase-scroll{max-height:185px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.public-showcase-scroll .public-showcase-row+.public-showcase-row{margin-top:10px}
+.page-docs .cmd-body{padding-top:20px}
+.page-docs .example+p{margin-top:14px}
+html[data-site-design=studio] .page-docs .usage-block{background:transparent}
+html[data-site-design=studio] .page-docs .flow-step{padding:12px 14px}
+html[data-site-design=studio] .page-docs .flow-step::after{left:28px;background:#adbf9f}
+html[data-site-design=studio] .page-docs .flow-num{border-color:#91a982;color:#375635;background:#f7fbf2}
+html[data-site-design=studio] .page-docs .flow-num.active{background:#dcebd3;border-color:#648359;color:#244a31}
+.page-roadmap .col-dot{border:1px solid currentColor;outline:1px solid currentColor;outline-offset:3px}
+.page-roadmap .col--now .col-dot{color:#50824d}
+.page-roadmap .col--plan .col-dot{color:#49769d}
+.page-roadmap .col--far .col-dot{color:#728268}
 .page-docs .table-scroll{overflow-x:auto;max-width:100%}
 html[data-site-design=studio]{color-scheme:light;--bg:#f5f7f0;--ink:#edf2e7;--panel:#fff;--panel2:#edf3e7;--surface:#fff;--surface2:#eef3e7;--border:#dbe5d3;--rim:#dbe5d3;--rim2:#bbcdb0;--blurple:#356748;--blurple2:#285339;--blurple-h:#285339;--glow:#426f4512;--accent:#5c824a;--green:#497b43;--yellow:#8b7024;--red:#b54c50;--orange:#986525;--text:#2e4b35;--sub:#7b8f70;--muted:#798d6d;--sans:'Segoe UI',system-ui,sans-serif;--mono:Consolas,monospace}
 html[data-site-design=studio] body{background:#f5f7f0;color:var(--text);font-family:var(--sans)}
@@ -405,6 +418,27 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
   }
   document.addEventListener('DOMContentLoaded',()=>{
     apply(document.documentElement.dataset.siteDesign);
+    const showcase=document.querySelector('.public-showcase-scroll');
+    if (showcase) {
+      const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+      let direction=1, lastTime=0, position=0, resumeAt=0;
+      const pause=()=>{resumeAt=performance.now()+2500;};
+      showcase.addEventListener('wheel',pause,{passive:true});
+      showcase.addEventListener('touchstart',pause,{passive:true});
+      function scroll(time) {
+        const elapsed=Math.min(40,time-(lastTime||time));
+        lastTime=time;
+        const end=showcase.scrollHeight-showcase.clientHeight;
+        if (end>0 && time>resumeAt && !document.hidden && !reducedMotion.matches &&
+            document.documentElement.dataset.siteDesign==='studio' && !showcase.matches(':hover,:focus-within')) {
+          position=Math.max(0,Math.min(end,position+direction*elapsed*.017));
+          showcase.scrollTop=position;
+          if (position===0 || position===end) {direction=position===0?1:-1;resumeAt=time+1000;}
+        } else position=showcase.scrollTop;
+        requestAnimationFrame(scroll);
+      }
+      requestAnimationFrame(scroll);
+    }
     document.querySelectorAll('.cmd-header').forEach((header,index)=>{
       const body=header.closest('.cmd-card').querySelector('.cmd-body');
       body.id=body.id||'command-details-'+index;
@@ -427,7 +461,7 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
 <!-- public-assets:end -->
 </head>
 <body class="page-home">
-<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23315d47%22%2F%3E%3Ctext%20x%3D%2214%22%20y%3D%2246%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2248%22%20font-weight%3D%22bold%22%20fill%3D%22%23edf4e5%22%3Ee.%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" aria-current="page">Главная</a><a href="./docs.html">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div><a class="public-invite" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить бота</a></header>
+<header class="public-topbar"><a class="public-brand" href="./index.html" aria-label="Elancag — главная"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%235865f2%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-family%3D%22Segoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2248%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3Ee%3C%2Ftext%3E%3C%2Fsvg%3E" alt="">Elancag</a><nav class="public-links" aria-label="Страницы сайта"><a href="./index.html" aria-current="page">Главная</a><a href="./docs.html">Документация</a><a href="./roadmap.html">Дорожная карта</a></nav><div class="public-design" role="group" aria-label="Оформление сайта"><button type="button" data-site-design-value="classic" aria-pressed="true">Классический</button><button type="button" data-site-design-value="studio" aria-pressed="false">Studio</button></div><a class="public-invite" data-discord-invite href="https://discord.com/oauth2/authorize?client_id=717768426377969806&amp;permissions=8&amp;scope=bot%20applications.commands">Добавить бота</a></header>
 
 <canvas id="cvs"></canvas>
 
@@ -456,7 +490,7 @@ html[data-site-design=studio] .public-invite:hover{background:#285339}
     </a>
   </div>
 
-  <aside class="public-showcase" aria-label="Возможности Elancag"><div class="public-showcase-title">ВОЗМОЖНОСТИ ELANCAG</div><h2>Полезные инструменты<br>для вашего сервера.</h2><div class="public-showcase-row"><span>01</span><div><strong>Команды и правила</strong><small>Роли, участники, каналы и задержки</small></div></div><div class="public-showcase-row"><span>02</span><div><strong>Автоматизация</strong><small>Игровые и невидимые статусы в голосовых</small></div></div><div class="public-showcase-row"><span>03</span><div><strong>Рейтинг участников</strong><small>Опыт, уровни, сообщения и время в голосе</small></div></div></aside>
+  <aside class="public-showcase" aria-label="Возможности Elancag"><div class="public-showcase-title">ВОЗМОЖНОСТИ ELANCAG</div><h2>Полезные инструменты<br>для вашего сервера.</h2><div class="public-showcase-scroll" tabindex="0" aria-label="Список возможностей"><div class="public-showcase-row"><span>01</span><div><strong>Команды и правила</strong><small>Роли, участники, каналы и задержки</small></div></div><div class="public-showcase-row"><span>02</span><div><strong>Автоматизация</strong><small>Игровые и невидимые статусы в голосовых</small></div></div><div class="public-showcase-row"><span>03</span><div><strong>Рейтинг участников</strong><small>Опыт, уровни, сообщения и время в голосе</small></div></div><div class="public-showcase-row"><span>04</span><div><strong>Мероприятия</strong><small>Карточки и запись через реакции · закрытое тестирование</small></div></div></div></aside>
   <div class="features">
     <div class="feat"><span class="fi">🌍</span> Смена регионов</div>
     <div class="feat"><span class="fi">⚡</span> Slash-команды</div>
