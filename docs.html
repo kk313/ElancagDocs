@@ -996,11 +996,58 @@ html,.page-docs .table-scroll,.page-docs .sidebar{scrollbar-width:thin;scrollbar
   .public-menu-panel .public-design { display: flex; margin-top: 10px; }
   .public-menu-panel .public-design button { flex: 1; min-height: 44px; font-size: 13px; }
 }
+
+.site-update {
+  position: fixed;
+  left: 20px;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 100;
+  width: min(370px, calc(100vw - 32px));
+  max-height: calc(100dvh - 100px);
+  overflow: auto;
+  padding: 18px;
+  box-sizing: border-box;
+  border: 1px solid #606cc0;
+  border-radius: 14px;
+  background: #202738;
+  color: #edf1fa;
+  box-shadow: 0 12px 40px #0006;
+  font: 400 14px/1.5 'Segoe UI', system-ui, sans-serif;
+}
+.site-update strong { display: block; font-size: 16px; }
+.site-update p { margin: 8px 0 14px; color: #c4cee4; }
+.site-update > div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.site-update a { color: #c4cbff; text-underline-offset: 3px; }
+.site-update button {
+  margin-left: auto;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid #858fff;
+  border-radius: 8px;
+  background: #4652cb;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+.site-update :focus-visible { outline: 2px solid #bdc5ff; outline-offset: 3px; }
+@media(max-width:600px) { .site-update { left: 16px; padding: 16px; } }
 </style>
 <script data-public-script>
 (() => {
   document.documentElement.dataset.siteDesign='classic';
   document.addEventListener('DOMContentLoaded',()=>{
+    const updateKey = 'elancag-public-update-3.3.0';
+    let updateSeen = false;
+    try { updateSeen = localStorage.getItem(updateKey) === 'seen'; } catch {}
+    if (!updateSeen) {
+      const notice = document.createElement('aside');
+      notice.className = 'site-update';
+      notice.setAttribute('aria-label', 'Обновление Elancag');
+      notice.innerHTML = '<strong>Elancag обновился до 3.3.0</strong><p>Обновили классический дизайн и мобильную навигацию. Команды в документации расположены по необходимым правам доступа.</p><div><a href="./docs.html">Открыть документацию</a><button type="button">Понятно</button></div>';
+      notice.querySelector('button').addEventListener('click', () => notice.remove());
+      document.body.append(notice);
+      try { localStorage.setItem(updateKey, 'seen'); } catch {}
+    }
     const menuToggle = document.querySelector('.public-menu-toggle');
     if (menuToggle) {
       const header = menuToggle.closest('.public-topbar');
